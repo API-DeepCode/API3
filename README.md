@@ -1,7 +1,7 @@
 # API 3°Semestre ADS
 
 <p align="center">
-      <img src="Docs\DeepCodeimg.png" width="200">
+      <img src="Imagens\DeepCodeimg.png" width="200">
       <h2 align="center">DeepCode</h2>
 </p>
 
