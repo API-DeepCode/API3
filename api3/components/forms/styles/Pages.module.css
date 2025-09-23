@@ -1,0 +1,58 @@
+.title{
+     font-size: 10px;
+     color: #81DDF1;
+}
+
+.single_navigation_button{
+     display: flex;
+     justify-content: end;
+}
+
+.navigation_buttons{
+     display: flex;
+     justify-content: space-between;
+}
+
+.thirdpage_questionary{
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     height: 100%;
+}
+
+.placeholder_button{
+     display: flex;
+     justify-content: end;
+     margin-bottom: 1em;
+}
+
+.thirdpage_navbuttons_area{
+     display: flex;
+     justify-content: center;
+     position: sticky;
+     top: 0;
+     z-index: 10;
+     gap: 5px;
+     background-color: #17202C;
+     height: 50em;
+     padding: 1em;
+}
+
+.thirdpage_navbuttons_area button{
+     width: 33%;
+     height: 3em;
+     background-color: #F5095F;
+     border: none;
+     color: white;
+     font-weight: bold;
+     cursor: pointer;
+     border-radius: 1em;
+}
+
+.thirdpage_navbuttons_area button:hover{
+     background-color: #ee266f;
+}
+
+.fourthpage_level_question input{
+     width: 2em;
+}
