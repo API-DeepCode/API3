@@ -11,19 +11,67 @@ CREATE TABLE Cliente (
     DataCriacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE RespostasClienteQuestionario (
-    RespostaClienteID INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE RespostasPart1 (
+    RespostaID INT AUTO_INCREMENT PRIMARY KEY,
     ClienteID INT NOT NULL,
-    Pergunta1 TEXT,
-    Pergunta2 TEXT,
-    Pergunta3 TEXT,
-    Pergunta4 TEXT,
-    Pergunta5 TEXT,
-    Pergunta6 TEXT,
-    Pergunta7 TEXT,
-    Pergunta8 TEXT,
-    Pergunta9 TEXT,
-    Pergunta10 TEXT,
+    setor TINYINT,
+    setor_outro VARCHAR(255),
+    num_colaboradores TINYINT,
+    porte TINYINT,
+    localizacao TINYINT,
+    DataResposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID) ON DELETE CASCADE
+);
+
+CREATE TABLE RespostasPart2 (
+    RespostaID INT AUTO_INCREMENT PRIMARY KEY,
+    ClienteID INT NOT NULL,
+    aspc_desafiador TINYINT,
+    aspc_desafiador_outro VARCHAR(255),
+    result_programa TINYINT,
+    result_programa_outro VARCHAR(255),
+    DataResposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID) ON DELETE CASCADE
+);
+
+CREATE TABLE RespostasPart4 (
+    RespostaID INT AUTO_INCREMENT PRIMARY KEY,
+    ClienteID INT NOT NULL,
+    invest TINYINT,
+    resp_treinamentos TINYINT,
+    resp_treinamentos_outro VARCHAR(255),
+    treinamentos TINYINT,
+    inov_aprendizagem TINYINT,
+    colab_desenvolvimento TINYINT,
+    soft_desenvolvimento TINYINT,
+    cult_art_hobby TINYINT,
+    empresa_impacto TINYINT,
+    implement_projeto BOOLEAN,
+    tempo_treinamento TINYINT,
+    DataResposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID) ON DELETE CASCADE
+);
+
+CREATE TABLE DimensionPart3 (
+    RespostaID INT AUTO_INCREMENT PRIMARY KEY,
+    ClienteID INT NOT NULL,
+    pes_cult BOOLEAN,
+    ert_ope BOOLEAN,
+    mer_cli BOOLEAN,
+    dir_fut BOOLEAN,
+    DataResposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID) ON DELETE CASCADE
+);
+
+CREATE TABLE QuestionsDimension (
+    RespostaID INT AUTO_INCREMENT PRIMARY KEY,
+    ClienteID INT NOT NULL,
+    pergunta1 TINYINT,
+    pergunta2 TINYINT,
+    pergunta3 TINYINT,
+    pergunta4 TINYINT,
+    pergunta5 TINYINT,
+    pergunta6 TINYINT,
     DataResposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID) ON DELETE CASCADE
 );
@@ -31,9 +79,7 @@ CREATE TABLE RespostasClienteQuestionario (
 CREATE TABLE RespostaIA (
     RespostaIAID INT AUTO_INCREMENT PRIMARY KEY,
     ClienteID INT NOT NULL,
-    RespostaClienteID INT NOT NULL,
-    Resposta TEXT NOT NULL,
+    Relatorio TEXT NOT NULL,
     DataResposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID) ON DELETE CASCADE,
-    FOREIGN KEY (RespostaClienteID) REFERENCES RespostasClienteQuestionario(RespostaClienteID) ON DELETE CASCADE
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID) ON DELETE CASCADE
 );
