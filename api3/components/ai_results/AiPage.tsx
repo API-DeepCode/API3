@@ -47,24 +47,6 @@ export default function AIanswer() {
           o form *
         </h3>
       </section>
-      {clientes.map((c) => (
-        <ul
-          className="flex flex-col justify-center pt-36"
-          key={c.RespostaClienteID}
-        >
-          <li>{c.Pergunta1}</li>
-          <li>{c.Pergunta2}</li>
-          <li>{c.Pergunta3}</li>
-          <li>{c.Pergunta4}</li>
-          <li>{c.Pergunta5}</li>
-          <li>{c.Pergunta6}</li>
-          <li>{c.Pergunta7}</li>
-          <li>{c.Pergunta8}</li>
-          <li>{c.Pergunta9}</li>
-          <li>{c.Pergunta10}</li>
-        </ul>
-      ))}
-
       <div>
         <input
           value={input}
