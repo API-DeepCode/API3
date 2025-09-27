@@ -96,7 +96,7 @@ footer {
   border-top: 0.2em solid #f5095f;
   background-color: black;
   color: white;
-  height: 50vh;
+  padding: 0.3rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
