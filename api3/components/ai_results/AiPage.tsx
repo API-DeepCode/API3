@@ -49,11 +49,12 @@ export default function AIanswer() {
       </section>
       <div>
         <input
-          value={input}
-          type="text"
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Digite sua pergunta..."
-        />
+  className="text-black" // <-- Classe corrigida aqui
+  value={input}
+  type="text"
+  onChange={(e) => setInput(e.target.value)}
+  placeholder="Digite sua pergunta..."
+/>
 
         <button
           onClick={sendPrompt}

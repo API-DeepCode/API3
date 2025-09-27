@@ -20,7 +20,17 @@ export default function InitialInstructions(){
                     </div>
 
                     <div>
-                         <h3>Explicação Lindinha aiai</h3>
+                         <h3>👋 Bem-vindo ao Questionário da Entrenova!
+
+Agradecemos por dedicar seu tempo para responder a este questionário. Sua participação é essencial para que possamos analisar os dados coletados e elaborar um relatório preciso e personalizado, contribuindo para a tomada de decisões estratégicas.
+
+⚙️ Como funciona:
+
+O preenchimento leva apenas alguns minutos.
+
+Não existem respostas certas ou erradas — buscamos opiniões sinceras e objetivas.
+
+Todas as informações serão tratadas com confidencialidade e utilizadas exclusivamente para fins de análise.</h3>
                     </div>
 
                     <div className={styles.continue_button}>

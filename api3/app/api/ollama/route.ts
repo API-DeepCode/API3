@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     }
 
     const data = await response.json();
-    console.log("Resposta da IA:", data);
+    console.log("Resposta da IA: ", data);
 
     // A resposta da OpenAI vem dentro de data.choices[0].message.content
     return NextResponse.json({ response: data.choices[0].message.content });
