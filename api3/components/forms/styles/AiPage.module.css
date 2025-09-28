@@ -1,0 +1,4 @@
+.scrollSection {
+  overflow-y: auto;
+  max-height: 400px; /* ajuste conforme necessário */
+}
