@@ -28,15 +28,14 @@ Criar um formulário com perguntas específicas fornecidas pela empresa para obt
 
 | Critério                      | Descrição                                                                                                                                   |
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Clareza na Descrição          | A User Story está escrita no formato “Como [persona], quero [ação] para que [objetivo]”.                                                     |
-| Critérios de Aceitação Definidos | Cada história possui critérios objetivos que indicam quando ela será considerada concluída.                                                 |
-| Cenários de Teste Especificados | Há pelo menos um cenário de teste estruturado (Dado, Quando, Então) definido pela equipe.                                                    |
+| Clareza na Descrição          | A User Story está escrita no formato “Como [persona], quero [ação] para que [objetivo]”.                                                    |
+| Critérios de Aceitação Definidos | Cada história possui critérios objetivos que indicam quando ela será considerada concluída.                                              |
+| Cenários de Teste Especificados | Há pelo menos um cenário de teste estruturado (Dado, Quando, Então) definido pela equipe.                                                 |
 | Independência                 | A história pode ser implementada sem depender de outra tarefa da mesma Sprint.                                                              |
-| Compreensão Compartilhada     | Toda a equipe (PO, devs, QA) compreende claramente o propósito e valor da história.                                                          |
-| Estimável                     | A história foi estimada (Planning Poker ou outra técnica) e pode ser planejada dentro da Sprint.                                             |
-| Documentos de Apoio           | Se necessário, existem anexos como fluxos, mockups, modelos de dados, formulários e relatórios de exemplo.                                   |
-| Critérios Técnicos Acordados  | Foi discutida a separação entre **Frontend, Backend e Banco de Dados**, bem como o uso da **IA offline** exigida no projeto.                  |
-| Alinhamento com o Objetivo do Sprint | A história está conectada ao objetivo da Sprint (ex.: diagnóstico inicial, relatórios via IA, trilha personalizada).                           |
+| Compreensão Compartilhada     | Toda a equipe (PO, SM, devs) compreende claramente o propósito e valor da história.                                                         |
+| Estimável                     | A história foi estimada (Planning Poker ou outra técnica) e pode ser planejada dentro da Sprint.                                            |
+| Critérios Técnicos Acordados  | Foi discutida a separação entre **Frontend, Backend e Banco de Dados**.                                                                     |
+| Alinhamento com o Objetivo do Sprint | A história está conectada ao objetivo da Sprint (ex.: diagnóstico inicial, relatórios via IA).                                       |
 
 
 ## 🥈 DoD - Definition of Done <a id="dod"></a>
@@ -45,13 +44,12 @@ Criar um formulário com perguntas específicas fornecidas pela empresa para obt
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Critérios de Aceitação Atendidos        | Todos os critérios de aceitação da história foram implementados e validados.                                                                |
 | Testes Manuais e Automatizados          | Dados são corretamente armazenados, recuperados e passam em testes manuais e (quando aplicável) automatizados.                              |
-| Código Revisado                         | O código foi revisado por pelo menos um colega de equipe.                                                                                    |
-| Documentação Atualizada                 | Foram atualizados os artefatos necessários: documentação da API, manual do usuário, manual de instalação, banco de dados e modelos.          |
+| Código Revisado                         | O código foi revisado por pelo menos um colega de equipe.                                                                                   |
+| Documentação Atualizada                 | Foram atualizados os artefatos necessários: documentação da API, manual do usuário, manual de instalação, banco de dados e modelos.         |
 | Integração Validada                     | As integrações entre Frontend, Backend, Banco de Dados e IA foram testadas.                                                                 |
-| Build/Testes Automatizados (quando aplicável) | O sistema roda sem erros e funcionalidades críticas passam em testes automatizados já existentes.                                             |
+| Build/Testes Automatizados (quando aplicável) | O sistema roda sem erros e funcionalidades críticas passam em testes automatizados já existentes.                                     |
 | Validação do PO                         | O Product Owner valida a entrega com base nos critérios definidos na User Story.                                                            |
 | Pronto para Deploy                      | O incremento está estável, versionado no Git, testado e pode ser implantado.                                                                |
-| Requisitos Não Funcionais Atendidos     | O sistema cumpre os requisitos definidos, como **IA offline, manual de instalação, manual do usuário e modelagem de banco de dados**.        |
 
 
 ## 📆Sprints
