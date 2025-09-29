@@ -72,7 +72,7 @@ Criar um formulário com perguntas específicas fornecidas pela empresa para obt
 | Product Owner  | Nícolas Ferreira Fernandes  | [LinkedIn](https://www.linkedin.com/in/nicolas-ferreira-fernandes/)     | [GitHub](https://github.com/nicolasffe)                               |
 | Scrum Master   | Luiz Roberto Briz           | [LinkedIn](https://www.linkedin.com/in/luiz-briz-15225b303/)            | [GitHub](https://github.com/HerrBriz)                                 |
 | Team Member    | Fabio Hiromitsu Nawa        | [LinkedIn](https://www.linkedin.com/in/f%C3%A1biohnawa/)                | [GitHub](https://github.com/TechSDW)                                  |
-| Team Member    | Gustavo Felipe Morais       | [LinkedIn](https://www.linkedin.com/in/gustavo-felipe-morais-a6517b327/)| [GitHub](https://github.com/gutibrk74)                                |
+| Team Member    | Gustavo Felipe Morais       | [LinkedIn]()| [GitHub](https://github.com/gutibrk74)                                |
 | Team Member    | Josué Olopes                | [LinkedIn](https://www.linkedin.com/in/josué-da-cunha-olopes-08b493212/)| [GitHub](https://github.com/jo-olopes)                                |
 | Team Member    | Gustavo Toneli              | [LinkedIn](https://www.linkedin.com/in/gustavo-toneli-de-oliveira-b46756228?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) | [GitHub](https://github.com/G59-Toneli)                               |
 | Team Member    | Igor Andrade                | [LinkedIn](https://www.linkedin.com/in/igor-andrade-b3b434327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) | [GitHub](https://github.com/IgorAndrade2024)                          |
