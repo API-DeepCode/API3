@@ -23,6 +23,14 @@ Criar um formulário com perguntas específicas fornecidas pela empresa para obt
 | Alta | Como **gestor** quero responder um formulário de diagnóstico inical para que eu consiga registrar os principais desafios da minha empresa. | 5 | 1 |
 | Alta | Como **gestor** quero visualizar um relatório simples baseado nas minhas respostas para ter uma primeira visão dos problemas da minha empresa. | 5 | 1 |
 | Alta | Como **gestor** quero responder um formulário mais detalhado sobre minha empresa para que o diagnóstico seja mais preciso e reflita minha realidade. | 5 | 1 |
+| Alta | Como **novo usuário**, quero preencher um formulário único com as 4 dimensões de uma só vez, para que eu tenha uma experiência fluida e contínua. | 8 | 2 |
+| Alta | Como **usuário que finalizou o preenchimento**, quero visualizar na tela um relatório com uma dimensão gratuita e ver as outras 3 bloqueadas com um CTA, para que eu entenda o valor do produto e seja incentivado a comprar. | 5 | 2 |
+| Média | Como usuário que finalizou o formulário, quero receber automaticamente um e-mail com o link para o meu relatório gratuito, para que eu possa acessá-lo a qualquer momento. | 2 | 2 |
+| Média | Como potencial cliente, quero entender claramente as opções de trilhas (Ouro, Diamante, Premium), seus preços e benefícios distintos, para que eu possa tomar uma decisão de compra informada. | 5 | 2 |
+| Alta | Como **usuário**, quero que a navegação no site seja mais intuitiva e fácil. | 3 | 2 |
+| Baixa | Como **usuário com dúvidas**, quero interagir com um chatbot para obter respostas rápidas para perguntas frequentes, para que eu possa resolver meus problemas de forma autônoma. | 3 | 2 |
+| Alta | Como **usuário que finalizou a avaliação**, quero receber um relatório com análises e insights que sejam profundos, personalizados e acionáveis, para que eu perceba um alto valor no diagnóstico e sinta confiança para adquirir a trilha completa. | 3 | 2 |
+
 
 ## 🥇 DoR - Definition of Ready <a id="dor"></a>
 
