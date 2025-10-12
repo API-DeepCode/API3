@@ -1,0 +1,42 @@
+.welcome_message{
+    border-left: 8px solid #82def2;
+    padding-left: 2em;
+    margin-bottom: 3em;
+    margin-left: 3em;
+}
+
+.welcome_message h1{
+    font-size: 3.3em;
+}
+
+.welcome_message > div{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    color: #FF095F;
+}
+
+.title{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.title > h1{
+    font-size: 2.5em;
+    width: 15em;
+    font-weight: bold;
+}
+
+.title > h2{
+    color: gray;
+    font-size: 1.3em;
+    width: 30em;
+    margin-bottom: 1.5em;
+}
+
+.information_title{
+    display: flex;
+}
