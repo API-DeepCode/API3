@@ -5,34 +5,32 @@ import { useRouter } from "next/navigation";
 export function useNavigation(){
      const router = useRouter();
 
-     // Navegação entre as páginas dos formulários
-
-     function navigateToFormsHome(){
+     function navigateToLandingPage(){
           router.push("/")
      }
 
      function navigateToFormsFirstPart(){
-          router.push("/forms/firstPart");
+          router.push("/Forms/FirstPart");
      }
 
      function navigateToFormsSecondPart(){
-          router.push("/forms/secondPart")
+          router.push("/Forms/SecondPart")
      }
 
      function navigateToFormsThirdPart(){
-          router.push("/forms/thirdPart")
+          router.push("/Forms/ThirdPart")
      }
 
      function navigateToFormsFourthPart(){
-          router.push("/forms/fourthPart")
+          router.push("/Forms/FourthPart")
      }
 
      function navigateToAiAnswer(){
-          router.push("/ai")
+          router.push("/AiAnswer")
      }
 
      return {
-          navigateToFormsHome,
+          navigateToLandingPage,
           navigateToFormsFirstPart,
           navigateToFormsSecondPart,
           navigateToFormsThirdPart,

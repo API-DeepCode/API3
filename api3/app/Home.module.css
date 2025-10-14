@@ -1,0 +1,143 @@
+.welcome_message{
+    border-left: 8px solid #ff4687;
+    padding-left: 2em;
+    margin-bottom: 3em;
+    margin-left: 3em;
+}
+
+.welcome_message h1{
+    font-size: 3.3em;
+}
+
+.welcome_message > div{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    color: #FF095F;
+}
+
+.title{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 4em;
+}
+
+.title > h1{
+    font-size: 2.5em;
+    width: 15em;
+    font-weight: bold;
+}
+
+.title > h2{
+    color: rgb(190, 190, 190);
+    font-size: 1.3em;
+    width: 30em;
+    margin-bottom: 1.5em;
+}
+
+.information_title{
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    align-items: center;
+    gap: .3em;
+    margin-bottom: 1.5em;
+}
+
+.main_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.parts{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 5em;
+}
+
+.parts > div{
+    width: 40%;
+    background-color: #351c8fdc;
+    border: 1px solid #9683e2;
+    border-radius: 1em;
+    padding: 1em 2em;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    margin: .3em;
+    color: rgb(190, 190, 190);
+}
+
+.part_icon{
+    color: white;
+    background: linear-gradient(145deg, #4547dd 0%, rgb(93, 96, 226) 50%, #787aff 100%);
+    border-radius: 1em;
+    height: 4em;
+    width: 4em;
+    padding: .5em;
+    margin-bottom: 5em;
+}
+
+.parts > div > h1{
+    font-size: 1.1em;
+    margin-bottom: 2em;
+    color: white;
+}
+
+.dimension{
+
+}
+
+.objective{
+    background-color: #351c8fdc;
+    border: 1px solid #9683e2;
+    width: 82%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1em;
+    height: 16em;
+    margin-bottom: 8em;
+}
+
+.objective > h1{
+    font-size: 2em;
+    margin-bottom: 1.5em;
+    margin-top: .8em;
+}
+
+.objective ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.objective li{
+    display: flex;
+    width: 40%;
+    margin-bottom: .7em;
+    gap: .4em;
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+.forms > h1{
+    font-size: 2.5em;
+    color: white;
+    margin-bottom: .3em;
+}
+
+.forms > h2{
+    color: rgb(190, 190, 190);
+    margin-bottom: 3em;
+}
