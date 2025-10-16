@@ -5,6 +5,8 @@ import { useState } from "react";
 import ProgressBar from "@/components/forms/ProgressBar";
 import styles from "@/components/styles/Forms.module.css"
 import NavButton from "@/components/globals/NavButton"
+import { addResponse } from "@/app/lib/firestoreService";
+
 
 export default function FirstPart(){
     const questions = [
@@ -37,6 +39,28 @@ export default function FirstPart(){
 
     const totalQuestions = questions.length;
     const answered = Object.keys(answers).length;
+
+    //////////
+    //Função para salvar as respostas no Firestore
+    const handleNext = async () => {
+        try {
+        // Monte o objeto com as respostas da parte 1
+        const data = {
+            num_colaboradores: answers[2],
+            porte: answers[3],
+            localizacao: answers[4],
+            setor: answers[1]
+        };
+
+    // Envia para o Firestore
+        await addResponse("respostas_part1", data);
+
+        console.log("Respostas da parte 1 enviadas com sucesso!");
+    } catch (error) {
+        console.error("Erro ao enviar respostas:", error);
+    }
+    };
+
 
     return(
         <section className={styles.display}>
@@ -83,7 +107,9 @@ export default function FirstPart(){
 
                             <ArrowRight/>
                         </>
-                    }/>
+                    }
+                     onClick={handleNext}
+                    />
                 </div>
             </div>
         </section>

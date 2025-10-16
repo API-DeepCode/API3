@@ -9,13 +9,15 @@ interface props{
     destination: navDestination;
     buttonStyle: buttonStyle;
     content: React.ReactNode;
+    onClick?: () => void; // 👈 adiciona isto/////////
 }
 
-export default function NavButton({ destination, buttonStyle, content }: props){
+export default function NavButton({ destination, buttonStyle, content, onClick }: props){
     const nav = useNavigation();
     
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
+        if (onClick) onClick(); // Chama a função passada por prop
 
         switch(destination){
             case 0:
@@ -50,7 +52,7 @@ export default function NavButton({ destination, buttonStyle, content }: props){
 
     return(
         <button className={buttonClass}
-        onClick={buttonStyle === 0 ? handleClick : undefined}>
+        onClick={handleClick}>
             {content}
         </button>
     );
