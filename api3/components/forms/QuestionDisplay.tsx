@@ -1,9 +1,9 @@
 import { FormsQuestions } from "@/lib/type";
 import { useState } from "react";
-import QuestionDefault from "@/components/forms/QuestionTypes/TypeDefault";
-import QuestionMultiple from "@/components/forms/QuestionTypes/TypeMultiple";
-import QuestionSlider from "@/components/forms/QuestionTypes/TypeSlider";
-import QuestionOpen from "@/components/forms/QuestionTypes/TypeOpen";
+import TypeDefault from "@/components/forms/QuestionTypes/TypeDefault";
+import TypeMultiple from "@/components/forms/QuestionTypes/TypeMultiple";
+import TypeSlider from "@/components/forms/QuestionTypes/TypeSlider";
+import TypeOpen from "@/components/forms/QuestionTypes/TypeOpen";
 import styles from "@/components/styles/Forms.module.css";
 
 interface Props {
@@ -28,13 +28,13 @@ export default function QuestionDisplay({ questions }: Props) {
 
         switch (q.type) {
           case "multiple":
-            return <QuestionMultiple key={q.question} {...commonProps} />;
+            return <TypeMultiple key={q.question} {...commonProps} />;
           case "slider":
-            return <QuestionSlider key={q.question} {...commonProps} />;
+            return <TypeSlider key={q.question} {...commonProps} />;
           case "open":
-            return <QuestionOpen key={q.question} {...commonProps} />;
+            return <TypeOpen key={q.question} {...commonProps} />;
           default:
-            return <QuestionDefault key={q.question} {...commonProps} />;
+            return <TypeDefault key={q.question} {...commonProps} />;
         }
       })}
     </div>

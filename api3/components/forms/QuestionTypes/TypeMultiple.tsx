@@ -3,55 +3,41 @@ import styles from "@/components/styles/Forms.module.css";
 
 interface Props {
   questionData: FormsQuestions;
-  answers: Record<string, string[]>;
-  handleSelect: (question: string, answers: string[]) => void;
+  answers: Record<string, string | string[]>;
+  handleSelect: (question: string, answer: string[]) => void;
 }
 
-export default function TypeMultiple({
-  questionData,
-  answers,
-  handleSelect,
-}: Props) {
-  const { question, options } = questionData;
-  const selectedAnswers = answers[question] || [];
+export default function TypeMultiple({ questionData, answers, handleSelect }: Props) {
+  const { question, options = [] } = questionData;
+  const selected = (answers[question] as string[]) || [];
 
-  const handleToggle = (option: string) => {
-    let updatedAnswers = [...selectedAnswers];
-
-    if (updatedAnswers.includes(option)) {
-      // Se já estava selecionada, remove
-      updatedAnswers = updatedAnswers.filter((a) => a !== option);
-    } else if (updatedAnswers.length < 3) {
-      // Se não estava e ainda há espaço, adiciona
-      updatedAnswers.push(option);
+  const toggleOption = (opt: string) => {
+    let newSelected = [...selected];
+    if (newSelected.includes(opt)) {
+      newSelected = newSelected.filter((o) => o !== opt);
+    } else if (newSelected.length < 3) {
+      newSelected.push(opt);
     }
-
-    handleSelect(question, updatedAnswers);
+    handleSelect(question, newSelected);
   };
 
   return (
-    <div key={question} className={styles.question}>
-      <h1 className={styles.question_title}>{question}</h1>
-
+    <div className={styles.question}>
+      <h2 className={styles.question_title}>{question}</h2>
       <ul className={styles.questions_display}>
-        {options.map((option) => (
+        {options.map((opt) => (
           <button
-            key={option}
+            key={opt}
             className={`${styles.option_button} ${
-              selectedAnswers.includes(option)
-                ? styles.option_button_selected
-                : ""
+              selected.includes(opt) ? styles.option_button_selected : ""
             }`}
-            onClick={() => handleToggle(option)}
+            onClick={() => toggleOption(opt)}
           >
-            {option}
+            {opt}
           </button>
         ))}
       </ul>
-
-      <p className={styles.helper_text}>
-        {selectedAnswers.length}/3 opções selecionadas
-      </p>
+      <p className={styles.helper_text}>{selected.length}/3 selecionadas</p>
     </div>
   );
 }

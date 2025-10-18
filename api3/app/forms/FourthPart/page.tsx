@@ -8,16 +8,16 @@ import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
 import QuestionDisplay from "@/components/forms/QuestionTypes/TypeDefault";
 
-export default function SecondPart(){
+export default function FourthPart(){
     const questions: FormsQuestions[] = [
         {
-            question: "Quando você pensa no desenvolvimento da sua equipe, quais aspectos considera mais desafiadores hoje?",
-            options: ["Comunicação & Relacionamento (clareza, feedback, alinhamento)", "Liderança & Colaboração (engajamento, delegação, gestão de conflitos)", "Criatividade & Resolução de Problemas (inovação, adaptação)", "Autogestão & Produtividade (tempo, autonomia, foco, bem-estar)", "Cultura & Valores (cultura organizacional viva, propósito, ESG)"],
+            question: "Setor principal da sua empresa",
+            options: ["Indústria", "Serviços", "Comércio/Varejo", "Tecnologia/Startups", "Educação/Cultura"],
             outro: true,
-            type: "multiple"
+            type: "default"
         },
         {
-            question: "Se tivesse que resumir, quais seriam os maiores resultados que você gostaria de alcançar com um programa de desenvolvimento humano?",
+            question: "Número de coladoradores",
             options: ["Até 10", "Entre 11 e 30", "Entre 30 e 100", "Acima de 100", "Acima de 500"],
             outro: false,
             type: "default"
@@ -48,9 +48,9 @@ export default function SecondPart(){
         <section className={styles.display}>
             <div className={styles.title}>
                 <div className={styles.information}>
-                    <h1>Desafios e Objetivos</h1>
+                    <h1>Investimentio, Inovação & Urgência</h1>
 
-                    <h2>Etapa 2 de 4</h2>
+                    <h2>Etapa 4 de 4</h2>
                 </div>
 
                 <ProgressBar current={answered} total={totalQuestions} />
@@ -67,7 +67,7 @@ export default function SecondPart(){
                 ))}
 
                 <div className={styles.navigation_area}>
-                    <NavButton destination={1} buttonStyle={0} content={
+                    <NavButton destination={3} buttonStyle={0} content={
                         <>
                             <ArrowLeft/>
 
@@ -75,7 +75,7 @@ export default function SecondPart(){
                         </>
                     }/>
 
-                    <NavButton destination={3} buttonStyle={answered == totalQuestions ? 0 : 1} content={
+                    <NavButton destination={4} buttonStyle={answered == totalQuestions ? 0 : 1} content={
                         <>
                             <p>Próximo</p>
 
