@@ -18,21 +18,9 @@ export default function SecondPart(){
         },
         {
             question: "Se tivesse que resumir, quais seriam os maiores resultados que você gostaria de alcançar com um programa de desenvolvimento humano?",
-            options: ["Até 10", "Entre 11 e 30", "Entre 30 e 100", "Acima de 100", "Acima de 500"],
-            outro: false,
-            type: "default"
-        },
-        {
-            question: "Porte da empresa",
-            options: ["Startup", "PME (Pequena/Média Empresa)", "Grande Empresa"],
-            outro: false,
-            type: "default"
-        },
-        {
-            question: "Localização",
-            options: ["Região Sudeste", "Região Sul", "Região Nordeste", "Região Norte", "Região Centro-Oeste"],
-            outro: false,
-            type: "default"
+            options: ["Fortalecer Pessoas & Cultura (engajamento, bem-estar, liderança próxima)", "Melhorar Estrutura & Operações (autonomia, eficiência, produtividade)", "Aprimorar Mercado & Clientes (posicionamento, atendimento, diferenciação)", "Consolidar Direção & Futuro (visão estratégica clara, inovação, ESG)"],
+            outro: true,
+            type: "multiple"
         }
     ];
 
