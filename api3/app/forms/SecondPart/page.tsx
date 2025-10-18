@@ -8,27 +8,31 @@ import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
 import QuestionDisplay from "@/components/forms/QuestionTypes/TypeDefault";
 
-export default function FirstPart(){
+export default function SecondPart(){
     const questions: FormsQuestions[] = [
         {
             question: "Setor principal da sua empresa",
             options: ["Indústria", "Serviços", "Comércio/Varejo", "Tecnologia/Startups", "Educação/Cultura"],
-            outro: true
+            outro: true,
+            type: "default"
         },
         {
             question: "Número de coladoradores",
             options: ["Até 10", "Entre 11 e 30", "Entre 30 e 100", "Acima de 100", "Acima de 500"],
-            outro: false
+            outro: false,
+            type: "default"
         },
         {
             question: "Porte da empresa",
             options: ["Startup", "PME (Pequena/Média Empresa)", "Grande Empresa"],
-            outro: false
+            outro: false,
+            type: "default"
         },
         {
             question: "Localização",
             options: ["Região Sudeste", "Região Sul", "Região Nordeste", "Região Norte", "Região Centro-Oeste"],
-            outro: false
+            outro: false,
+            type: "default"
         }
     ];
 
@@ -44,9 +48,9 @@ export default function FirstPart(){
         <section className={styles.display}>
             <div className={styles.title}>
                 <div className={styles.information}>
-                    <h1>Perfil da Empresa</h1>
+                    <h1>Desafios e Objetivos</h1>
 
-                    <h2>Etapa 1 de 4</h2>
+                    <h2>Etapa 2 de 4</h2>
                 </div>
 
                 <ProgressBar current={answered} total={totalQuestions} />
@@ -71,7 +75,7 @@ export default function FirstPart(){
                         </>
                     }/>
 
-                    <NavButton destination={2} buttonStyle={answered == totalQuestions ? 0 : 1} content={
+                    <NavButton destination={1} buttonStyle={answered == totalQuestions ? 0 : 1} content={
                         <>
                             <p>Próximo</p>
 

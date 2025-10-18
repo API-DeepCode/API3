@@ -9,7 +9,7 @@
 }
 
 .pink_button_unavailable{
-    background: transparent;
+    background: #4e31c296;
     color: rgba(255, 9, 95, 1);
     padding: .8em 1.5em;
     display: flex;
