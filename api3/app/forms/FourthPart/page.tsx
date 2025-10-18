@@ -66,8 +66,10 @@ export default function FourthPart(){
         },
     ];
 
-    const [answers] = useState<Record<string, string>>({});
-
+    const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
+    const handleSelect = (question: string, answer: string | string[]) => {
+        setAnswers((prev) => ({ ...prev, [question]: answer}));
+    }
     const totalQuestions = questions.length;
     const answered = Object.keys(answers).length;
 
@@ -84,9 +86,11 @@ export default function FourthPart(){
             </div>
 
             <div className={styles.questions_table}>
-                    <QuestionDisplay
-                        questions={questions}
-                    />
+                <QuestionDisplay
+                    questions={questions}
+                    answers={answers}
+                    handleSelect={handleSelect}
+                />
 
                 <div className={styles.navigation_area}>
                     <NavButton destination={3} buttonStyle={0} content={

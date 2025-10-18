@@ -1,5 +1,4 @@
 import { FormsQuestions } from "@/lib/type";
-import { useState } from "react";
 import TypeDefault from "@/components/forms/QuestionTypes/TypeDefault";
 import TypeMultiple from "@/components/forms/QuestionTypes/TypeMultiple";
 import TypeSlider from "@/components/forms/QuestionTypes/TypeSlider";
@@ -8,15 +7,11 @@ import styles from "@/components/styles/Forms.module.css";
 
 interface Props {
   questions: FormsQuestions[];
+  answers: Record<string, string | string[]>;
+  handleSelect: (question: string, answer: string | string[]) => void;
 }
 
-export default function QuestionDisplay({ questions }: Props) {
-  const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
-
-  const handleSelect = (question: string, answer: string | string[]) => {
-    setAnswers((prev) => ({ ...prev, [question]: answer }));
-  };
-
+export default function QuestionDisplay({ questions, answers, handleSelect }: Props) {
   return (
     <div className={styles.questions_container}>
       {questions.map((q) => {
