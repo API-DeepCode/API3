@@ -6,36 +6,37 @@ import ProgressBar from "@/components/forms/ProgressBar";
 import styles from "@/components/styles/Forms.module.css"
 import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
-import QuestionDisplay from "@/components/forms/QuestionTypes/TypeDefault";
+import QuestionDisplay from "@/components/forms/QuestionDisplay";
 
 export default function FirstPart(){
     const questions: FormsQuestions[] = [
         {
             question: "Setor principal da sua empresa",
             options: ["Indústria", "Serviços", "Comércio/Varejo", "Tecnologia/Startups", "Educação/Cultura"],
-            outro: true
+            outro: true,
+            type: "default"
         },
         {
             question: "Número de coladoradores",
             options: ["Até 10", "Entre 11 e 30", "Entre 30 e 100", "Acima de 100", "Acima de 500"],
-            outro: false
+            outro: false,
+            type: "default"
         },
         {
             question: "Porte da empresa",
             options: ["Startup", "PME (Pequena/Média Empresa)", "Grande Empresa"],
-            outro: false
+            outro: false,
+            type: "default"
         },
         {
             question: "Localização",
             options: ["Região Sudeste", "Região Sul", "Região Nordeste", "Região Norte", "Região Centro-Oeste"],
-            outro: false
+            outro: false,
+            type: "default"
         }
     ];
 
-    const [answers, setAnswers] = useState<Record<string, string>>({});
-    const handleSelect = (question: string, answer: string) => {
-        setAnswers((prev) => ({...prev, [question]: answer}));
-    };
+    const [answers] = useState<Record<string, string>>({});
 
     const totalQuestions = questions.length;
     const answered = Object.keys(answers).length;
@@ -53,14 +54,9 @@ export default function FirstPart(){
             </div>
 
             <div className={styles.questions_table}>
-                {questions.map((p) => (
-                    <QuestionDisplay
-                        key={p.question}
-                        questionData={p}
-                        answers={answers}
-                        handleSelect={handleSelect}
-                    />
-                ))}
+                <QuestionDisplay
+                    questions={questions}
+                />
 
                 <div className={styles.navigation_area}>
                     <NavButton destination={0} buttonStyle={0} content={

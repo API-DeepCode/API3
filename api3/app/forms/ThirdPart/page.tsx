@@ -6,7 +6,7 @@ import ProgressBar from "@/components/forms/ProgressBar";
 import styles from "@/components/styles/Forms.module.css"
 import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
-import QuestionDisplay from "@/components/forms/QuestionTypes/TypeDefault";
+import QuestionDisplay from "@/components/forms/QuestionDisplay";
 
 export default function ThirdPart(){
     const questions: FormsQuestions[] = [
@@ -18,10 +18,7 @@ export default function ThirdPart(){
         },
     ];
 
-    const [answers, setAnswers] = useState<Record<string, string>>({});
-    const handleSelect = (question: string, answer: string) => {
-        setAnswers((prev) => ({...prev, [question]: answer}));
-    };
+    const [answers] = useState<Record<string, string>>({});
 
     const totalQuestions = questions.length;
     const answered = Object.keys(answers).length;
@@ -39,14 +36,9 @@ export default function ThirdPart(){
             </div>
 
             <div className={styles.questions_table}>
-                {questions.map((p) => (
                     <QuestionDisplay
-                        key={p.question}
-                        questionData={p}
-                        answers={answers}
-                        handleSelect={handleSelect}
+                        questions={questions}
                     />
-                ))}
 
                 <div className={styles.navigation_area}>
                     <NavButton destination={2} buttonStyle={0} content={

@@ -4,7 +4,7 @@ import styles from "@/components/styles/Forms.module.css";
 interface Props {
   questionData: FormsQuestions;
   answers: Record<string, string | string[]>;
-  handleSelect: (question: string, answer: string[]) => void;
+  handleSelect: (question: string, answer: string | string[]) => void;
 }
 
 export default function TypeMultiple({ questionData, answers, handleSelect }: Props) {

@@ -6,7 +6,7 @@ import ProgressBar from "@/components/forms/ProgressBar";
 import styles from "@/components/styles/Forms.module.css"
 import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
-import QuestionDisplay from "@/components/forms/QuestionTypes/TypeDefault";
+import QuestionDisplay from "@/components/forms/QuestionDisplay";
 
 export default function FourthPart(){
     const questions: FormsQuestions[] = [
@@ -44,13 +44,13 @@ export default function FourthPart(){
             question: "De 1 a 5, o quanto você considera importante incentivar cultura, arte e hobbies",
             options: ["Região Sudeste", "Região Sul", "Região Nordeste", "Região Norte", "Região Centro-Oeste"],
             outro: false,
-            type: "default"
+            type: "slider"
         },
         {
             question: "De 1 a 5, o quanto você considera importante reconhecer impacto do desenvolvimento humano na performance da empresa",
             options: ["Presenciais", "Online", "Híbridos"],
             outro: false,
-            type: "default"
+            type: "slider"
         },
         {
             question: "Vocês já implementaram projetos inovadores em treinamentos anteriores?",
@@ -66,10 +66,7 @@ export default function FourthPart(){
         },
     ];
 
-    const [answers, setAnswers] = useState<Record<string, string>>({});
-    const handleSelect = (question: string, answer: string) => {
-        setAnswers((prev) => ({...prev, [question]: answer}));
-    };
+    const [answers] = useState<Record<string, string>>({});
 
     const totalQuestions = questions.length;
     const answered = Object.keys(answers).length;
@@ -87,14 +84,9 @@ export default function FourthPart(){
             </div>
 
             <div className={styles.questions_table}>
-                {questions.map((p) => (
                     <QuestionDisplay
-                        key={p.question}
-                        questionData={p}
-                        answers={answers}
-                        handleSelect={handleSelect}
+                        questions={questions}
                     />
-                ))}
 
                 <div className={styles.navigation_area}>
                     <NavButton destination={3} buttonStyle={0} content={

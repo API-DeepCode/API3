@@ -5,17 +5,17 @@ import { useState } from "react";
 interface Props {
   questionData: FormsQuestions;
   answers: Record<string, string | string[]>;
-  handleSelect: (question: string, answer: string) => void;
+  handleSelect: (question: string, answer: string | string[]) => void;
 }
 
 export default function TypeSlider({ questionData, answers, handleSelect }: Props) {
   const { question } = questionData;
-  const [value, setValue] = useState(Number(answers[question]) || 3);
+  const [value, setValue] = useState<number>(Number(answers[question]) || 3);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setValue(Number(newValue));
-    handleSelect(question, newValue);
+    handleSelect(question, newValue); // envia string (como vem do input)
   };
 
   return (
@@ -27,10 +27,13 @@ export default function TypeSlider({ questionData, answers, handleSelect }: Prop
           type="range"
           min="1"
           max="5"
+          step="1"
           value={value}
           onChange={handleChange}
           className={styles.scale_slider}
+          aria-label={`Escala de ${question}`}
         />
+
         <div className={styles.scale_labels}>
           {[1, 2, 3, 4, 5].map((n) => (
             <span
