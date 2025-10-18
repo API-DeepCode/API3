@@ -11,29 +11,59 @@ import QuestionDisplay from "@/components/forms/QuestionTypes/TypeDefault";
 export default function FourthPart(){
     const questions: FormsQuestions[] = [
         {
-            question: "Setor principal da sua empresa",
-            options: ["Indústria", "Serviços", "Comércio/Varejo", "Tecnologia/Startups", "Educação/Cultura"],
+            question: "Qual a faixa de investimento disponível para treinamentos atualmente?",
+            options: ["Até R$ 10 mil", "Entre R$ 10 mil e R$ 50 mil", "Acima de R$ 50 mil"],
+            outro: false,
+            type: "default"
+        },
+        {
+            question: "Quem geralmente decide sobre a contratação de treinamentos?",
+            options: ["CEO / Diretor", "RH / Treinamento e Desenvolvimento", "Marketing / Comunicação"],
             outro: true,
             type: "default"
         },
         {
-            question: "Número de coladoradores",
-            options: ["Até 10", "Entre 11 e 30", "Entre 30 e 100", "Acima de 100", "Acima de 500"],
+            question: "Vocês preferem treinamentos",
+            options: ["Presenciais", "Online", "Híbridos"],
             outro: false,
             type: "default"
         },
         {
-            question: "Porte da empresa",
-            options: ["Startup", "PME (Pequena/Média Empresa)", "Grande Empresa"],
-            outro: false,
-            type: "default"
-        },
-        {
-            question: "Localização",
+            question: "De 1 a 5, o quanto você considera importante investir em desenvolvimento profissional dos colaboradores",
             options: ["Região Sudeste", "Região Sul", "Região Nordeste", "Região Norte", "Região Centro-Oeste"],
             outro: false,
             type: "default"
-        }
+        },
+        {
+            question: "De 1 a 5, o quanto você considera importante desenvolver soft skills (comunicação, liderança, criatividade, autogestão)",
+            options: ["Presenciais", "Online", "Híbridos"],
+            outro: false,
+            type: "default"
+        },
+        {
+            question: "De 1 a 5, o quanto você considera importante incentivar cultura, arte e hobbies",
+            options: ["Região Sudeste", "Região Sul", "Região Nordeste", "Região Norte", "Região Centro-Oeste"],
+            outro: false,
+            type: "default"
+        },
+        {
+            question: "De 1 a 5, o quanto você considera importante reconhecer impacto do desenvolvimento humano na performance da empresa",
+            options: ["Presenciais", "Online", "Híbridos"],
+            outro: false,
+            type: "default"
+        },
+        {
+            question: "Vocês já implementaram projetos inovadores em treinamentos anteriores?",
+            options: ["Sim", "Não"],
+            outro: false,
+            type: "default"
+        },
+        {
+            question: "Em quanto tempo vocês desejam iniciar o treinamento?",
+            options: ["Imediatamente", "Em até 3 meses", "Em até 3 meses"],
+            outro: false,
+            type: "default"
+        },
     ];
 
     const [answers, setAnswers] = useState<Record<string, string>>({});
