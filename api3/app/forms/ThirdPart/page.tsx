@@ -40,6 +40,42 @@ export default function ThirdPart(){
             outro: false,
             type: "default",
         },
+        {
+            question: "De 0 a 5, quão claras estão as funções e responsabilidades de cada pessoa da equipe?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "De 0 a 5, como você avalia a comunicação entre líderes e equipes?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Quando alguém comete um erro, qual costuma ser a reação predominante na empresa? (descreva em 2–3 linhas)",
+            options: [""],
+            outro: false,
+            type: "open",
+        },
+        {
+            question: "De 0 a 5, como você avalia a colaboração entre diferentes equipes ou áreas? (explique em 1 frase, se quiser)",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "O que mais motiva os colaboradores hoje",
+            options: ["Reconhecimento", "Estabilidade", "Aprendizado"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Em situações de conflito entre equipes, como eles costumam ser resolvidos? (descreva em 2–3 linhas)",
+            options: [""],
+            outro: false,
+            type: "open",
+        }
     ]
 
     const structureOperations: FormsQuestions[] = [
@@ -79,6 +115,42 @@ export default function ThirdPart(){
             outro: false,
             type: "default",
         },
+        {
+            question: "De 0 a 5, os treinamentos oferecidos pela empresa atendem às reais necessidades do trabalho?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Quando surgem várias demandas, como as pessoas sabem o que deve ser priorizado? (descreva em 2–3 linhas)",
+            options: [""],
+            outro: false,
+            type: "open",
+        },
+        {
+            question: "De 0 a 5, como você avalia a qualidade e a agilidade das decisões internas?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Quando alguém precisa tomar uma decisão simples, qual é o caminho mais comum?",
+            options: ["decide sozinho", "pede ao gestor", "espera orientação formal"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "De 0 a 5, os processos atuais contribuem para eficiência e produtividade? (explique em 1 frase)",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Existe clareza sobre quem é responsável por cada entrega ou há sobreposição de funções?",
+            options: [""],
+            outro: false,
+            type: "open",
+        }
     ]
 
     const marketClients: FormsQuestions[] = [
@@ -117,6 +189,42 @@ export default function ThirdPart(){
             options: ["CRM, BI e pesquisas estruturadas", "Algumas planilhas e relatórios", "Feedbacks informais, dados dispersos", "Não há recursos específicos"],
             outro: false,
             type: "default",
+        },
+        {
+            question: "De 0 a 5, como você avalia a capacidade da empresa de se adaptar a mudanças externas?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Quando um cliente traz uma demanda inesperada, qual costuma ser a reação da equipe? (descreva em 2–3 linhas)",
+            options: [""],
+            outro: false,
+            type: "open",
+        },
+        {
+            question: "De 0 a 5, a empresa costuma ouvir e aplicar feedback de clientes?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Qual foi a última vez que uma rotina ou processo mudou por causa de feedback externo? (descreva em 2–3 linhas)",
+            options: [""],
+            outro: false,
+            type: "open",
+        },
+        {
+            question: "De 0 a 5, como você avalia a capacidade da empresa de inovar em produtos ou serviços?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Em uma frase, como a empresa busca se diferenciar da concorrência?",
+            options: [""],
+            outro: false,
+            type: "open",
         }
     ]
 
@@ -156,6 +264,42 @@ export default function ThirdPart(){
             options: ["Dashboards, OKRs, planejamentos formais", "Algumas planilhas ou relatórios", "Discussões informais, sem registro contínuo", "Não temos instrumentos claros"],
             outro: false,
             type: "default",
+        },
+        {
+            question: "De 0 a 5, os colaboradores conhecem e entendem a visão de futuro da empresa?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Se tivesse que resumir a visão de futuro da empresa em uma frase, qual seria?",
+            options: [""],
+            outro: false,
+            type: "open",
+        },
+        {
+            question: "De 0 a 5, como você avalia a preparação e desenvolvimento de novos líderes?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Quem hoje você enxerga como potenciais líderes dentro da empresa?",
+            options: [""],
+            outro: false,
+            type: "open",
+        },
+        {
+            question: "De 0 a 5, a empresa tem metas estratégicas claras e compartilhadas com todos?",
+            options: [""],
+            outro: false,
+            type: "slider",
+        },
+        {
+            question: "Na sua opinião, qual é a maior oportunidade e qual o maior risco da empresa nos próximos 3 anos?",
+            options: [""],
+            outro: false,
+            type: "open",
         },
     ]
 
