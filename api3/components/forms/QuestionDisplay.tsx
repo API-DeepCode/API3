@@ -6,32 +6,40 @@ import TypeOpen from "@/components/forms/QuestionTypes/TypeOpen";
 import styles from "@/components/styles/Forms.module.css";
 
 interface Props {
-  questions: FormsQuestions[];
-  answers: Record<string, string | string[]>;
-  handleSelect: (question: string, answer: string | string[]) => void;
+    questions: FormsQuestions[];
+    answers: Record<string, string | string[]>;
+    handleSelect: (question: string, answer: string | string[]) => void;
 }
 
 export default function QuestionDisplay({ questions, answers, handleSelect }: Props) {
-  return (
-    <div className={styles.questions_container}>
-      {questions.map((q) => {
-        const commonProps = {
-          questionData: q,
-          answers,
-          handleSelect,
-        };
+    if (!questions || !Array.isArray(questions)) {
+        return (
+            <div>
+                Carregando...
+            </div>
+        )
+    }
 
-        switch (q.type) {
-          case "multiple":
-            return <TypeMultiple key={q.question} {...commonProps} />;
-          case "slider":
-            return <TypeSlider key={q.question} {...commonProps} />;
-          case "open":
-            return <TypeOpen key={q.question} {...commonProps} />;
-          default:
-            return <TypeDefault key={q.question} {...commonProps} />;
-        }
-      })}
-    </div>
-  );
+    return (
+        <div className={styles.questions_container}>
+            {questions.map((q) => {
+                const commonProps = {
+                    questionData: q,
+                    answers,
+                    handleSelect,
+                };
+
+                switch (q.type) {
+                    case "multiple":
+                        return <TypeMultiple key={q.question} {...commonProps} />;
+                    case "slider":
+                        return <TypeSlider key={q.question} {...commonProps} />;
+                    case "open":
+                        return <TypeOpen key={q.question} {...commonProps} />;
+                    default:
+                        return <TypeDefault key={q.question} {...commonProps} />;
+                }
+            })}
+        </div>
+    );
 }

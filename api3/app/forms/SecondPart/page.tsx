@@ -28,7 +28,6 @@ export default function SecondPart(){
     const handleSelect = (question: string, answer: string | string[]) => {
         setAnswers((prev) => ({ ...prev, [question]: answer}));
     }
-
     const totalQuestions = questions.length;
     const answered = Object.keys(answers).length;
 
@@ -37,7 +36,6 @@ export default function SecondPart(){
             <div className={styles.title}>
                 <div className={styles.information}>
                     <h1>Desafios e Objetivos</h1>
-
                     <h2>Etapa 2 de 4</h2>
                 </div>
 

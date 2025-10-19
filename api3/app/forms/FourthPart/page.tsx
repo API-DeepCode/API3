@@ -60,7 +60,7 @@ export default function FourthPart(){
         },
         {
             question: "Em quanto tempo vocês desejam iniciar o treinamento?",
-            options: ["Imediatamente", "Em até 3 meses", "Em até 3 meses"],
+            options: ["Imediatamente", "Em até 3 meses", "Em 6 meses ou mais"],
             outro: false,
             type: "default"
         },
@@ -78,7 +78,6 @@ export default function FourthPart(){
             <div className={styles.title}>
                 <div className={styles.information}>
                     <h1>Investimentio, Inovação & Urgência</h1>
-
                     <h2>Etapa 4 de 4</h2>
                 </div>
 

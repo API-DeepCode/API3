@@ -49,7 +49,6 @@ export default function FirstPart(){
             <div className={styles.title}>
                 <div className={styles.information}>
                     <h1>Perfil da Empresa</h1>
-
                     <h2>Etapa 1 de 4</h2>
                 </div>
 

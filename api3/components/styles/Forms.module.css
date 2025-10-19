@@ -12,6 +12,7 @@
 
 .question{
     padding: .5em 2em;
+    margin-bottom: 1em;
 }
 
 .information{
@@ -83,57 +84,57 @@
 }
 
 .scale_container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 .scale_slider {
-  width: 80%;
-  appearance: none;
-  height: 6px;
-  border-radius: 3px;
-  background: #ddd;
-  outline: none;
-  cursor: pointer;
+    width: 80%;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: #7b5fe2;
+    outline: none;
+    cursor: pointer;
 }
 
 .scale_slider::-webkit-slider-thumb {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #0070f3;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.2s;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #4e28d6;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
 .scale_slider::-webkit-slider-thumb:hover {
-  background: #0057c2;
+    background: #3a1ca7;
 }
 
 .scale_labels {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 0.5rem;
 }
 
 .scale_label {
-  font-size: 1rem;
-  color: #888;
+    font-size: 1rem;
+    color: #ffffff;
 }
 
 .scale_label_selected {
-  color: #0070f3;
-  font-weight: bold;
+    color: #7454e9;
+    font-weight: bold;
 }
 
-.helper_text {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #666;
-  text-align: right;
+.multi_progress {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #dadada;
+    text-align: right;
 }
