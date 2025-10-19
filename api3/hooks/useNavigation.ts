@@ -10,7 +10,7 @@ export function useNavigation(){
      }
 
      function navigateToFormsFirstPart(){
-          router.push("/Forms/FirstPart");
+          router.push("/forms/firstPart");
      }
 
      function navigateToFormsSecondPart(){
