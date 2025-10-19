@@ -11,84 +11,6 @@ import QuestionDisplay from "@/components/forms/QuestionDisplay";
 export default function ThirdPart(){
     const peopleCulture: FormsQuestions[] = [
         {
-            question: "Como a empresa ouve seus clientes?",
-            options: ["Temos pesquisa estruturada e contínua", "Fazemos de forma ocasional", "Reagimos só em reclamações", "Não há escuta formal"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Como vendas e atendimento trabalham juntos?",
-            options: ["Colaboram e compartilham informações", "Trocam parcialmente, com falhas", "Atuam isolados, sem integração", "Há conflitos ou competição entre áreas"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Quando o mercado muda, como a empresa reage?",
-            options: ["Antecipamos tendências e inovamos rápido", "Ajustamos, mas com atraso", "Só reagimos a crises", "Não temos adaptação estruturada"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Como é o acompanhamento de metas comerciais?",
-            options: ["Claro, transparente e frequente", "Existe, mas pouco revisado", "Informal, depende do gestor", "Não temos acompanhamento"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "O diferencial competitivo está claro?",
-            options: ["Sim, é comunicado e reconhecido", "Existe, mas pouco divulgado", "É incerto, varia por área", "Não está claro"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Quais ferramentas apoiam mercado & clientes?",
-            options: ["CRM, BI e pesquisas estruturadas", "Algumas planilhas e relatórios", "Feedbacks informais, dados dispersos", "Não há recursos específicos"],
-            outro: false,
-            type: "default",
-        },
-    ]
-
-    const structureOperations: FormsQuestions[] = [
-        {
-            question: "Como a visão de futuro é comunicada?",
-            options: ["Todos conhecem e entendem", "É conhecida, mas só pela gestão", "Quase não é falada", "Não é comunicada"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Como os líderes conectam pessoas à estratégia?",
-            options: ["Inspiram e alinham metas claramente", "Tentam alinhar, mas varia muito", "Há pouca conexão", "Não há esforço de alinhamento"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Qual é o papel da inovação no planejamento?",
-            options: ["Prioridade central, com projetos claros", "Importante, mas sem orçamento", "Acontece de forma isolada", "Não é prioridade"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Como as atividades diárias se conectam com a estratégia?",
-            options: ["Sempre, com clareza", "Às vezes, depende do gestor", "Raramente, não chega claro", "Nunca, cada área segue isolada"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Como a empresa lida com propósito e impacto social?",
-            options: ["Está no centro das decisões", "É importante, mas secundário", "Fala-se, mas não se aplica", "Não há preocupação"],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Quais ferramentas apoiam a estratégia?",
-            options: ["Dashboards, OKRs, planejamentos formais", "Algumas planilhas ou relatórios", "Discussões informais, sem registro contínuo", "Não temos instrumentos claros"],
-            outro: false,
-            type: "default",
-        },
-    ]
-
-    const marketClients: FormsQuestions[] = [
-        {
             question: "Como a comunicação acontece no dia a dia?",
             options: ["Sim", "Parcialmente", "Não", ""],
             outro: false,
@@ -126,7 +48,7 @@ export default function ThirdPart(){
         },
     ]
 
-    const directionFuture: FormsQuestions[] = [
+    const structureOperations: FormsQuestions[] = [
         {
             question: "Como é a troca de informações entre áreas?",
             options: ["Integrada e frequente", "Funciona em parte, com alguns ruídos", "Depende de reuniões formais", "As áreas trabalham isoladas"],
@@ -160,6 +82,84 @@ export default function ThirdPart(){
         {
             question: "Quais ferramentas apoiam as operações do dia a dia?",
             options: ["Sistemas integrados (ERP, CRM, dashboards)", "Algumas ferramentas digitais, mas sem integração", "Recursos básicos (planilhas, controles manuais)", "Não há ferramentas"],
+            outro: false,
+            type: "default",
+        },
+    ]
+
+    const marketClients: FormsQuestions[] = [
+        {
+            question: "Como a empresa ouve seus clientes?",
+            options: ["Temos pesquisa estruturada e contínua", "Fazemos de forma ocasional", "Reagimos só em reclamações", "Não há escuta formal"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Como vendas e atendimento trabalham juntos?",
+            options: ["Colaboram e compartilham informações", "Trocam parcialmente, com falhas", "Atuam isolados, sem integração", "Há conflitos ou competição entre áreas"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Quando o mercado muda, como a empresa reage?",
+            options: ["Antecipamos tendências e inovamos rápido", "Ajustamos, mas com atraso", "Só reagimos a crises", "Não temos adaptação estruturada"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Como é o acompanhamento de metas comerciais?",
+            options: ["Claro, transparente e frequente", "Existe, mas pouco revisado", "Informal, depende do gestor", "Não temos acompanhamento"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "O diferencial competitivo está claro?",
+            options: ["Sim, é comunicado e reconhecido", "Existe, mas pouco divulgado", "É incerto, varia por área", "Não está claro"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Quais ferramentas apoiam mercado & clientes?",
+            options: ["CRM, BI e pesquisas estruturadas", "Algumas planilhas e relatórios", "Feedbacks informais, dados dispersos", "Não há recursos específicos"],
+            outro: false,
+            type: "default",
+        },
+    ]
+
+    const directionFuture: FormsQuestions[] = [
+        {
+            question: "Como a visão de futuro é comunicada?",
+            options: ["Todos conhecem e entendem", "É conhecida, mas só pela gestão", "Quase não é falada", "Não é comunicada"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Como os líderes conectam pessoas à estratégia?",
+            options: ["Inspiram e alinham metas claramente", "Tentam alinhar, mas varia muito", "Há pouca conexão", "Não há esforço de alinhamento"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Qual é o papel da inovação no planejamento?",
+            options: ["Prioridade central, com projetos claros", "Importante, mas sem orçamento", "Acontece de forma isolada", "Não é prioridade"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Como as atividades diárias se conectam com a estratégia?",
+            options: ["Sempre, com clareza", "Às vezes, depende do gestor", "Raramente, não chega claro", "Nunca, cada área segue isolada"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Como a empresa lida com propósito e impacto social?",
+            options: ["Está no centro das decisões", "É importante, mas secundário", "Fala-se, mas não se aplica", "Não há preocupação"],
+            outro: false,
+            type: "default",
+        },
+        {
+            question: "Quais ferramentas apoiam a estratégia?",
+            options: ["Dashboards, OKRs, planejamentos formais", "Algumas planilhas ou relatórios", "Discussões informais, sem registro contínuo", "Não temos instrumentos claros"],
             outro: false,
             type: "default",
         },
