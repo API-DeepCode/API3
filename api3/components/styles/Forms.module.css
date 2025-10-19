@@ -138,3 +138,20 @@
     color: #dadada;
     text-align: right;
 }
+
+.dimension_buttons{
+    display: flex;
+    justify-content: space-between;
+    height: 3em;
+    margin: 1em 0;
+}
+
+.dimension_button{
+    background: linear-gradient(170deg, rgba(255, 9, 95, 1) 0%, rgb(255, 37, 113) 50%, rgb(255, 65, 132) 100%);
+    padding: .8em 1.5em;
+    border-radius: .8em;
+    display: flex;
+    gap: .5em;
+    cursor: pointer;
+    border: 1px solid rgb(255, 164, 196);
+}

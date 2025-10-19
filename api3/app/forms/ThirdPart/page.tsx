@@ -12,12 +12,6 @@ export default function ThirdPart(){
     const peopleCulture: FormsQuestions[] = [
         {
             question: "Como a comunicação acontece no dia a dia?",
-            options: ["Sim", "Parcialmente", "Não", ""],
-            outro: false,
-            type: "default",
-        },
-        {
-            question: "Sua empresa realiza pesquisas de satisfação?",
             options: ["Todos têm clareza e acesso fácil às informações", "Funciona na maior parte do tempo, mas com algumas falhas", "Normalmente só em reuniões formais ou quando há problemas", "É confusa, cada líder comunica de um jeito"],
             outro: false,
             type: "default",
@@ -123,7 +117,7 @@ export default function ThirdPart(){
             options: ["CRM, BI e pesquisas estruturadas", "Algumas planilhas e relatórios", "Feedbacks informais, dados dispersos", "Não há recursos específicos"],
             outro: false,
             type: "default",
-        },
+        }
     ]
 
     const directionFuture: FormsQuestions[] = [
