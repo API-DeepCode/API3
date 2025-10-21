@@ -24,7 +24,6 @@ export default function Home() {
 
                 <h2>Um diagnóstico completo com 4 etapas que analisa várias dimensões para transformar dados em insights acionáveis.</h2>
 
-                {/* --- INÍCIO DA MODIFICAÇÃO --- */}
                 <div className={styles.buttonContainer}>
                     <NavButton destination={1} buttonStyle={0} content={
                         <p>Preencher o Formulário</p>
@@ -33,7 +32,6 @@ export default function Home() {
                         <p>Ver Planos</p>
                     </Link>
                 </div>
-                {/* --- FIM DA MODIFICAÇÃO --- */}
             </div>
 
 

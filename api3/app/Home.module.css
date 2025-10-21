@@ -152,9 +152,6 @@
   text-decoration: none;
 }
 
-/* Caminho: api3/app/Home.module.css */
-/* Adicione este código no final do arquivo */
-
 .buttonContainer {
   display: flex;
   gap: 1rem;
@@ -171,7 +168,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  text-decoration: none; /* Remove sublinhado do link */
+  text-decoration: none;
 }
 
 .secondaryButton:hover {

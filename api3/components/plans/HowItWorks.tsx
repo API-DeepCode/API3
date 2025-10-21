@@ -30,7 +30,6 @@ const steps = [
 export function HowItWorks() {
   return (
     <section className="relative w-full max-w-7xl mx-auto px-6 py-24">
-      {/* Fundo com gradiente dinâmico */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent rounded-3xl blur-3xl opacity-70 -z-10" />
 
       <div className="text-center mb-20">

@@ -62,7 +62,6 @@ export function Benefits() {
             className="group relative border border-border bg-gradient-to-b from-card/60 to-card/40 backdrop-blur-md rounded-2xl shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_25px_-5px_var(--tw-shadow-color)] hover:shadow-primary/50 hover:border-primary/50"
           >
             <CardContent className="p-8 flex flex-col items-start">
-              {/* Ícone com brilho */}
               <div className="relative mb-6">
                 <div className="absolute inset-0 bg-primary/30 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">

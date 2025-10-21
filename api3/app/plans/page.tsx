@@ -12,8 +12,6 @@ export default function PaginaDePlanos() {
       <HowItWorks />
       <PricingSection />
       <PricingComparison />
-      
-      {/* 4. Adicione o rodapé, assim como no projeto original */}
     </div>
   );
 }
