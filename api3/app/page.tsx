@@ -1,8 +1,11 @@
+// Caminho: api3/app/page.tsx
+
 "use client"
 
 import { Bot, ArrowDown, UserRound, Goal, PencilRuler, ChartNoAxesCombined, CircleCheck } from "lucide-react";
 import styles from "./Home.module.css"
 import NavButton from "@/components/globals/NavButton"
+import Link from "next/link"; // Adicione este import
 
 export default function Home() {
     return (
@@ -21,10 +24,18 @@ export default function Home() {
 
                 <h2>Um diagnóstico completo com 4 etapas que analisa várias dimensões para transformar dados em insights acionáveis.</h2>
 
-                <NavButton destination={1} buttonStyle={0} content={
-                    <p>Preencher o Formulário</p>
-                }/>
+                {/* --- INÍCIO DA MODIFICAÇÃO --- */}
+                <div className={styles.buttonContainer}>
+                    <NavButton destination={1} buttonStyle={0} content={
+                        <p>Preencher o Formulário</p>
+                    }/>
+                    <Link href="/plans" className={styles.secondaryButton}>
+                        <p>Ver Planos</p>
+                    </Link>
+                </div>
+                {/* --- FIM DA MODIFICAÇÃO --- */}
             </div>
+
 
             <div className={styles.information}>
                 <div className={styles.information_title}>
