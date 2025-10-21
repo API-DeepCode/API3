@@ -7,6 +7,7 @@ import styles from "@/components/styles/Forms.module.css"
 import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
 import QuestionDisplay from "@/components/forms/QuestionDisplay";
+import { addResponse } from "@/app/lib/firestoreService";
 
 export default function ThirdPart(){
     const peopleCulture: FormsQuestions[] = [
@@ -310,23 +311,144 @@ export default function ThirdPart(){
         "Direção & Futuro": directionFuture,
     };
 
-    const [currentDimension, setCurrentDimension] = useState<keyof typeof dimensions>("peopleCulture");
+     const [currentDimension, setCurrentDimension] = useState<keyof typeof dimensions>(Object.keys(dimensions)[0] as keyof typeof dimensions);
 
+    // adicionado estado de respostas e função de seleção
     const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
     const handleSelect = (question: string, answer: string | string[]) => {
         setAnswers((prev) => ({ ...prev, [question]: answer }));
     };
 
-    const totalQuestions = Object.values(dimensions).reduce(
-        (sum, dim) => sum + dim.length,
-        0
-    );
-
-    const answered = Object.keys(answers).length;
-
+    // perguntas e progresso da dimensão ativa
+    const questions = dimensions[currentDimension];
+    const totalQuestions = questions.length;
+    const answered = questions.filter(q => answers[q.question] !== undefined && answers[q.question] !== null && answers[q.question] !== "").length;
     const allAnswered = answered === totalQuestions;
 
-    const questions = dimensions[currentDimension] ?? [];
+     //Função para salvar as respostas no Firestore
+    const handleNext = async () => {
+        try {
+            const computeWeight = (answer: any, options: string[]) : number | null => {
+                if (answer == null) return null;
+
+                // slider / numeric string
+                if (typeof answer === "number") return answer;
+                if (typeof answer === "string" && /^\d+(\.\d+)?$/.test(answer)) return Number(answer);
+
+                // single select
+                if (typeof answer === "string") {
+                    const idx = options.indexOf(answer);
+                    if (idx === -1) return null;
+                    // peso: primeira opção = 4, segunda = 3, terceira = 2, quarta = 1
+                    return Math.max(1, 4 - idx);
+                }
+
+                // multiple select (array) -> média dos pesos
+                if (Array.isArray(answer)) {
+                    const weights = answer
+                        .map(a => {
+                            const idx = options.indexOf(a);
+                            return idx === -1 ? null : Math.max(1, 4 - idx);
+                        })
+                        .filter((w): w is number => typeof w === "number");
+                    if (!weights.length) return null;
+                    return Math.round(weights.reduce((s, v) => s + v, 0) / weights.length);
+                }
+
+                return null;
+            };
+
+            const mapKeys = {
+                "Pessoas & Cultura": [
+                    "comunicacao_diaria",
+                    "estilo_lideranca",
+                    "agir_problemas",
+                    "rotina_trabalho",
+                    "valores_empresa",
+                    "funcoes_responsabilidades",
+                    "comunicacao_lideres",
+                    "reacao_erro",
+                    "colaboracao_equipes",
+                    "motivacao_colaboradores",
+                    "resolucao_conflitos"
+                ],
+                "Estrutura & Operações": [
+                    "troca_informacoes",
+                    "delegacao",
+                    "quando_processos_falham",
+                    "autonomia_operacional",
+                    "padrao_qualidade",
+                    "ferramentas_operacionais",
+                    "treinamentos_adequados",
+                    "priorizacao_demandas",
+                    "qualidade_decisoes",
+                    "caminho_decisao_simples",
+                    "processos_produtividade",
+                    "clareza_responsabilidades"
+                ],
+                "Mercado & Clientes": [
+                    "como_ouve_clientes",
+                    "vendas_atendimento",
+                    "reacao_mudancas_mercado",
+                    "acompanhamento_metas",
+                    "diferencial_competitivo",
+                    "ferramentas_mercado",
+                    "capacidade_adaptacao",
+                    "reacao_demanda_cliente",
+                    "ouvir_aplicar_feedback",
+                    "ultima_mudanca_por_feedback",
+                    "capacidade_inovacao",
+                    "diferenciacao_concorrencia"
+                ],
+                "Direção & Futuro": [
+                    "comunicacao_visao",
+                    "ligacao_lideres_estrategia",
+                    "papel_inovacao",
+                    "ligacao_atividade_estrategia",
+                    "proposito_impacto",
+                    "ferramentas_estrategia",
+                    "conhecimento_visao",
+                    "resumo_visao",
+                    "preparacao_novos_lideres",
+                    "potenciais_lideres",
+                    "metas_estrategicas",
+                    "oportunidade_risco"
+                ]
+            };
+
+            const promises: Promise<any>[] = [];
+
+            for (const dimName of Object.keys(dimensions)) {
+                const questionsArr = dimensions[dimName] as FormsQuestions[];
+                const keys = (mapKeys as any)[dimName] as string[] | undefined;
+                const data: Record<string, any> = { dimension: dimName };
+
+                questionsArr.forEach((q, idx) => {
+                    const key = keys && keys[idx] ? keys[idx] : `q_${idx + 1}`;
+                    const ans = answers[q.question];
+                    if (q.type === "default" || q.type === "multiple") {
+                        const val = computeWeight(ans, q.options ?? []);
+                        data[key] = val;
+                    } else if (q.type === "slider") {
+                        const parsed = typeof ans === "number" ? ans : Number(ans);
+                        data[key] = Number.isFinite(parsed) ? parsed : null;
+                    } else if (q.type === "open") {
+                        data[key] = typeof ans === "string" ? ans : (ans ? String(ans) : null);
+                    } else {
+                        data[key] = ans ?? null;
+                    }
+                });
+
+                promises.push(addResponse("respostas_part3", data));
+            }
+
+            await Promise.all(promises);
+
+            console.log("Respostas da parte 3 enviadas com sucesso!");
+        } catch (error) {
+            console.error("Erro ao enviar respostas da parte 3:", error);
+        }
+    };
 
     return(
         <section className={styles.display}>
@@ -346,7 +468,7 @@ export default function ThirdPart(){
                         <button className={`${styles.dimension_button}
                         ${currentDimension === dim ? styles.active_dimension : ""}`}
                         key={dim}
-                        onClick={() => setCurrentDimension(dim)}>
+                        onClick={() => setCurrentDimension(dim as keyof typeof dimensions)}>
                             {dim}
                         </button>
                     ))}
@@ -373,7 +495,7 @@ export default function ThirdPart(){
 
                             <ArrowRight/>
                         </>
-                    }/>
+                    } onClick={handleNext}/>
                 </div>
             </div>
         </section>

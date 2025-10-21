@@ -39,7 +39,7 @@ export default function NavButton({ destination, buttonStyle, content, onClick }
                 nav.navigateToAiAnswer();
         };
     }
-    
+   
     let buttonClass = "";
     switch (buttonStyle){
         case 0:
