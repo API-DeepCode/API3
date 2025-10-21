@@ -7,6 +7,7 @@ import styles from "@/components/styles/Forms.module.css"
 import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
 import QuestionDisplay from "@/components/forms/QuestionDisplay";
+import { addResponse } from "@/app/lib/firestoreService";
 
 export default function SecondPart(){
     const questions: FormsQuestions[] = [
@@ -30,6 +31,24 @@ export default function SecondPart(){
     }
     const totalQuestions = questions.length;
     const answered = Object.keys(answers).length;
+
+        //Função para salvar as respostas no Firestore
+        const handleNext = async () => {
+            try {
+            // Monte o objeto com as respostas da parte 1
+            const data = {
+                desafios_equipe: answers["Quando você pensa no desenvolvimento da sua equipe, quais aspectos considera mais desafiadores hoje?"],
+                resultados_esperados: answers["Se tivesse que resumir, quais seriam os maiores resultados que você gostaria de alcançar com um programa de desenvolvimento humano?"]
+            };
+    
+        // Envia para o Firestore
+            await addResponse("respostas_part2", data);
+    
+            console.log("Respostas da parte 2 enviadas com sucesso!");
+        } catch (error) {
+            console.error("Erro ao enviar respostas:", error);
+        }
+        };
 
     return(
         <section className={styles.display}>
@@ -64,7 +83,9 @@ export default function SecondPart(){
 
                             <ArrowRight/>
                         </>
-                    }/>
+                    }
+                    onClick={handleNext}
+                    />
                 </div>
             </div>
         </section>

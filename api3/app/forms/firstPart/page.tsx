@@ -46,16 +46,15 @@ export default function FirstPart(){
     const totalQuestions = questions.length;
     const answered = Object.keys(answers).length;
 
-    //////////
     //Função para salvar as respostas no Firestore
     const handleNext = async () => {
         try {
         // Monte o objeto com as respostas da parte 1
         const data = {
-            num_colaboradores: answers[2],
-            porte: answers[3],
-            localizacao: answers[4],
-            setor: answers[1]
+            num_colaboradores: answers["Número de coladoradores"],
+            porte: answers["Porte da empresa"],
+            localizacao: answers["Localização"],
+            setor: answers["Setor principal da sua empresa"]
         };
 
     // Envia para o Firestore
