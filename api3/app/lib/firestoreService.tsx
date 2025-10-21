@@ -1,18 +1,5 @@
-import { 
-  getFirestore, 
-  collection, 
-  addDoc, 
-  getDocs, 
-  updateDoc, 
-  deleteDoc, 
-  doc 
-} from "firebase/firestore";
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "./firebase"; // Se o firebaseConfig está exportado do seu arquivo firebase.ts
-
-// Inicializa o Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { db } from "./firebase"; // reutiliza a instância já inicializada em firebase.tsx
 
 // === CREATE ===
 export async function addResponse(collectionName: string, data: any) {
@@ -30,7 +17,7 @@ export async function addResponse(collectionName: string, data: any) {
 export async function getResponses(collectionName: string) {
   try {
     const querySnapshot = await getDocs(collection(db, collectionName));
-    const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const data = querySnapshot.docs.map(d => ({ id: d.id, ...d.data() }));
     return data;
   } catch (error) {
     console.error("Erro ao obter documentos:", error);

@@ -40,7 +40,6 @@ export default function FirstPart(){
     const totalQuestions = questions.length;
     const answered = Object.keys(answers).length;
 
-    //////////
     //Função para salvar as respostas no Firestore
     const handleNext = async () => {
         try {
