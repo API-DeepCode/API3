@@ -141,3 +141,41 @@
     color: rgb(190, 190, 190);
     margin-bottom: 3em;
 }
+
+.inlineLink {
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.inlineLink:hover {
+  text-decoration: none;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+.secondaryButton {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 2px solid #f51966;
+  color: #f51966;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(245, 25, 102, 0.1);
+  transform: translateY(-2px);
+}
+
+.secondaryButton p {
+  margin: 0;
+}

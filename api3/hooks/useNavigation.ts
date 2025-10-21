@@ -14,15 +14,15 @@ export function useNavigation(){
      }
 
      function navigateToFormsSecondPart(){
-          router.push("/Forms/SecondPart")
+          router.push("/forms/SecondPart")
      }
 
      function navigateToFormsThirdPart(){
-          router.push("/Forms/ThirdPart")
+          router.push("/forms/ThirdPart")
      }
 
      function navigateToFormsFourthPart(){
-          router.push("/Forms/FourthPart")
+          router.push("/forms/FourthPart")
      }
 
      function navigateToAiAnswer(){
