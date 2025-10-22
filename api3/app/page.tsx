@@ -6,6 +6,7 @@ import { Bot, ArrowDown, UserRound, Goal, PencilRuler, ChartNoAxesCombined, Circ
 import styles from "./Home.module.css"
 import NavButton from "@/components/globals/NavButton"
 import Link from "next/link"; // Adicione este import
+import { ChatToggler } from "@/components/chatToggler/ChatToggler";
 
 export default function Home() {
     return (
@@ -121,6 +122,7 @@ export default function Home() {
                             <p>Iniciar o diagnóstico</p>
                         }/>
                     </div>
+                        <ChatToggler/>
                 </section>
             </div>
         </main>
