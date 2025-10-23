@@ -1,0 +1,166 @@
+.display{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3em 0;
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.title h1{
+    font-size: 2em;
+    color: rgba(255, 9, 95, 1)
+}
+
+.title h2{
+    color: rgb(196, 196, 196);
+}
+
+.overview{
+    background-color: #553faddc;
+    border: 1px solid #9683e2;
+    border-radius: 1.5em;
+    padding: 1em 0;
+    min-width: 60em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+.overview_title{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.overview_title > h1{
+    font-size: 1.8em;
+    background-color: rgb(22, 155, 55);
+    border: 2px solid white;
+    border-radius: 100%;
+    height: 4em;
+    width: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .5em;
+}
+
+.overview_info{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.overview_info > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #331d8adc;
+    border: 1px solid #8167eb;
+    padding: .8em 3em;
+    width: 20%;   
+    border-radius: .5em;
+}
+
+.overview_info > div > h2{
+    font-size: .8em;
+    color: rgb(182, 182, 182);
+}
+
+.prioritize_area{
+    background-color: #553faddc;
+    border: 1px solid #9683e2;
+    padding: 1em 2.8em;
+    min-width: 60em;
+    border-radius: 1.5em;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3em;
+}
+
+.prioritize_title{
+    display: flex;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.prioritize_list{
+    display: flex;
+    flex-direction: column;
+    gap: .8em;
+}
+
+.prioritize_list li{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(216, 85, 85);
+    padding: 1em 2em;
+    border-radius: .6em;
+    align-items: center;
+}
+
+.prioritize_list li h2{
+    background-color: rgb(211, 16, 16);
+    padding: .5em .7em;
+    border-radius: 1em;
+}
+
+.plans_area{
+    background-color: #22145edc;
+    border: 1px solid rgb(199, 21, 21);
+    padding: 1em 2.8em;
+    min-width: 60em;
+    border-radius: 1.5em;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3em;
+    gap: 2em;
+}
+
+.plans_title{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.plans_benefits{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.plans_benefits li{
+    display: flex;
+    width: 40%;
+    gap: 1em;
+}
+
+.plans_buttons{
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.redo_button{
+    background-color: #342479dc;
+    padding: 0 1em;
+    border-radius: .8em;
+    border: 1px solid white;
+}
+
+.final_info{
+    width: 66.5em;
+    background-color: #22145edc;
+    padding: 1em 2.8em;
+    border-radius: 1.5em;
+    border: 1px solid rgb(153, 153, 153);
+    text-align: center;
+    font-size: .9em;
+}

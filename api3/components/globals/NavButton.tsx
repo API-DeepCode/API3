@@ -2,7 +2,7 @@ import { useNavigation } from "@/hooks/useNavigation";
 import React from "react";
 import styles from "@/components/styles/NavButton.module.css"
 
-type navDestination = 0 | 1 | 2 | 3 | 4 | 5;
+type navDestination = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 type buttonStyle = 0 | 1
 
 interface props{
@@ -37,6 +37,8 @@ export default function NavButton({ destination, buttonStyle, content, onClick }
                 break;
             case 5:
                 nav.navigateToAiAnswer();
+            case 6:
+                nav.navigateToPlans();
         };
     }
    
