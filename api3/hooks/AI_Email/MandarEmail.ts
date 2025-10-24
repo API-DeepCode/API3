@@ -50,14 +50,14 @@ async function enviarEmailComAnexo(
     port: 587,
     secure: false,
     auth: {
-      user: process.env.SMTP_USER || "contato.andradeigor@gmail.com",
-      pass: process.env.SMTP_PASS || "ythb dqmz srfe vhsb", // use senha de app no Gmail
+      user: "testeparaapi2025@gmail.com", // substitua pelo seu e-mail
+      pass: "axgp ptfg taub fmyw", // gere uma "senha de app" no Gmail
     },
   });
 
   // Envio do e-mail com o PDF em anexo
   await transporter.sendMail({
-    from: `"Relatórios IA" <${process.env.SMTP_USER || "contato.andradeigor@gmail.com"}>`,
+    from: `"Relatórios IA" <testeparaapi2025@gmail.com>`,
     to: destinatario,
     subject: "Relatório gerado por IA",
     text: "Segue em anexo o relatório solicitado.",
@@ -79,7 +79,7 @@ async function enviarEmailComAnexo(
   try {
     const nomeArquivo = "relatorio.pdf";
     await gerarPDF(resultado, nomeArquivo);
-    await enviarEmailComAnexo("gameroliver502@gmail.com", nomeArquivo);
+    await enviarEmailComAnexo("luizrbrizq@hotmail.com", nomeArquivo);
   } catch (err) {
     console.error("❌ Erro:", err);
   }
