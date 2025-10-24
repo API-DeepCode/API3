@@ -29,12 +29,17 @@ export function useNavigation(){
           router.push("/AiAnswer")
      }
 
+     function navigateToPlans(){
+          router.push("/plans")
+     }
+
      return {
           navigateToLandingPage,
           navigateToFormsFirstPart,
           navigateToFormsSecondPart,
           navigateToFormsThirdPart,
           navigateToFormsFourthPart,
-          navigateToAiAnswer
+          navigateToAiAnswer,
+          navigateToPlans
      };
 }

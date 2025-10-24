@@ -161,7 +161,7 @@ export default function FourthPart(){
                         </>
                     }/>
 
-                    <NavButton destination={0} buttonStyle={answered == totalQuestions ? 0 : 1} content={
+                    <NavButton destination={5} buttonStyle={answered == totalQuestions ? 0 : 1} content={
                         <>
                             <p>Próximo</p>
 
