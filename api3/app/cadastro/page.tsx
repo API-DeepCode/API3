@@ -1,7 +1,12 @@
+"use client";
+
 import React, { useState } from 'react';
 
-import './CadastroForm.css'; 
+// Importa o objeto 'styles' do CSS Module
 
+
+// Força a subida de dois níveis (../..)
+import styles from '../../components/globals/CadastroForm.module.css';
 
 // 1. INTERFACE ATUALIZADA para os novos campos
 interface CadastroData {
@@ -38,7 +43,6 @@ const CadastroForm: React.FC = () => {
     e.preventDefault();
 
     // 3. LÓGICA DE VALIDAÇÃO SIMPLIFICADA (Apenas checa campos vazios)
-    // Cria um array com todos os valores e verifica se algum está vazio
     const camposObrigatorios = [
       formData.nomeEmpresa, 
       formData.cnpj, 
@@ -56,8 +60,6 @@ const CadastroForm: React.FC = () => {
       return;
     }
     
-    
-    
     setErro('');
     
     // 4. LOG ATUALIZADO
@@ -67,17 +69,17 @@ const CadastroForm: React.FC = () => {
   };
 
   return (
-    // Usa nomes de classes que correspondem ao nosso CSS
-    <div className="cadastro-page-wrapper">
+    // Usa estilos do CSS Module: styles.nomeDaClasse
+    <div className={styles['cadastro-page-wrapper']}>
         
-      <div className="cadastro-form-container">
-        <div className="cadastro-header">
-          <span className="header-line"></span> 
+      <div className={styles['cadastro-form-container']}>
+        <div className={styles['cadastro-header']}>
+          <span className={styles['header-line']}></span> 
           {/* 5. TÍTULO ATUALIZADO */}
-          <h1 className="cadastro-title">Cadastro de Empresa</h1>
+          <h1 className={styles['cadastro-title']}>Cadastro de Empresa</h1>
         </div>
         
-        <form onSubmit={handleSubmit} className="cadastro-form">
+        <form onSubmit={handleSubmit} className={styles['cadastro-form']}>
           {/* 6. CAMPOS ATUALIZADOS */}
           
           <input
@@ -86,7 +88,7 @@ const CadastroForm: React.FC = () => {
             placeholder="Nome da Empresa"
             value={formData.nomeEmpresa}
             onChange={handleChange}
-            className="form-input"
+            className={styles['form-input']} // <-- CORRIGIDO
           />
 
           <input
@@ -95,7 +97,7 @@ const CadastroForm: React.FC = () => {
             placeholder="CNPJ"
             value={formData.cnpj}
             onChange={handleChange}
-            className="form-input"
+            className={styles['form-input']} // <-- CORRIGIDO
           />
           
           <input
@@ -104,7 +106,7 @@ const CadastroForm: React.FC = () => {
             placeholder="E-mail"
             value={formData.email}
             onChange={handleChange}
-            className="form-input"
+            className={styles['form-input']} // <-- CORRIGIDO
           />
 
           <input
@@ -113,7 +115,7 @@ const CadastroForm: React.FC = () => {
             placeholder="Telefone"
             value={formData.telefone}
             onChange={handleChange}
-            className="form-input"
+            className={styles['form-input']} // <-- CORRIGIDO
           />
 
           <input
@@ -122,7 +124,7 @@ const CadastroForm: React.FC = () => {
             placeholder="Nome do Responsável"
             value={formData.nomeResponsavel}
             onChange={handleChange}
-            className="form-input"
+            className={styles['form-input']} // <-- CORRIGIDO
           />
           
           <input
@@ -131,7 +133,7 @@ const CadastroForm: React.FC = () => {
             placeholder="Cargo/Função do Responsável"
             value={formData.cargoResponsavel}
             onChange={handleChange}
-            className="form-input"
+            className={styles['form-input']} // <-- CORRIGIDO
           />
           
           <input
@@ -140,18 +142,18 @@ const CadastroForm: React.FC = () => {
             placeholder="Cidade/Estado da Empresa"
             value={formData.cidadeEstado}
             onChange={handleChange}
-            className="form-input"
+            className={styles['form-input']} // <-- CORRIGIDO
           />
           
-          {erro && <p className="error-text">{erro}</p>}
+          {erro && <p className={styles['error-text']}>{erro}</p>}
 
-          <button type="submit" className="button-primary">
+          <button type="submit" className={styles['button-primary']}>
             Cadastrar
           </button>
 
-          <p className="login-link">
+          <p className={styles['login-link']}>
             {/* 7. TEXTO DE LINK ATUALIZADO */}
-            Já tem um cadastro? <a href="#" className="link-secondary">Voltar</a>
+            Já tem um cadastro? <a href="#" className={styles['link-secondary']}>Voltar</a>
           </p>
         </form>
       </div>

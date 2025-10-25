@@ -1,13 +1,13 @@
+/*
+ * ATUALIZAÇÕES:
+ * 1. REMOVIDO: Estilos globais (html, body) que não devem estar em um módulo.
+ * 2. ADICIONADO: Estilo para o placeholder, garantindo a visibilidade do texto nos inputs.
+ */
 
-html, body, #root { 
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
+/* --- Layout da Página (Wrapper) --- */
 .cadastro-page-wrapper {
-    /* COR DE FUNDO (Use o roxo/vinho que você definiu: #ae7fb4 ou #C0392B) */
-    background-color: #9176a7; 
+    /* COR DE FUNDO (Roxo/Vinho da sua imagem) */
+    background-color: #560e91; 
     
     min-height: 100vh;         
     width: 100%;
@@ -17,12 +17,10 @@ html, body, #root {
     align-items: center;       /* Centraliza verticalmente */
     
     /* Garante largura total e padding de segurança */
-    width: 100%;
     padding: 20px;
 }
 
-
-
+/* --- Container do Formulário --- */
 .cadastro-form-container {
     display: flex;
     flex-direction: column;
@@ -36,6 +34,7 @@ html, body, #root {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* --- Cabeçalho e Título --- */
 .cadastro-header {
     display: flex;
     align-items: center;
@@ -58,12 +57,14 @@ html, body, #root {
     font-weight: 500;
 }
 
+/* --- Formulário Principal --- */
 .cadastro-form {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
+/* --- Campos de Input (Resolver Problema de Placeholders) --- */
 .form-input {
     padding: 12px 15px;
     margin-bottom: 15px;
@@ -72,12 +73,20 @@ html, body, #root {
     font-size: 1em;
     outline: none;
     transition: border-color 0.2s;
+    color: #333; /* Garante que o texto digitado seja visível */
 }
 
 .form-input:focus {
     border-color: #FF0066;
 }
 
+/* ESTILO CRÍTICO PARA OS PLACEHOLDERS */
+.form-input::placeholder {
+    color: #888; /* Cor escura para garantir a visibilidade do texto de guia */
+    opacity: 1; /* Garante que não esteja transparente */
+}
+
+/* --- Botão Principal --- */
 .button-primary {
     padding: 12px;
     background-color: #FF0066;
@@ -94,6 +103,7 @@ html, body, #root {
     background-color: #E6005C;
 }
 
+/* --- Textos Auxiliares --- */
 .error-text {
     color: #FF0066;
     margin-bottom: 10px;
