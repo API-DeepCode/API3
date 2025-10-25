@@ -1,214 +1,148 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { ROTEIRO_CONVERSA } from './conversas'; // Importa o nosso roteiro de perguntas
+// Caminho: api3/components/globals/chatbot.tsx
 
-// --- 1. Definição de Tipos e Props ---
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { ROTEIRO_CONVERSA } from './conversas';
+import { Button } from '@/components/ui/button';
+import { X, RotateCcw } from 'lucide-react';
+import { cn } from "@/components/ui/utils";
 
-// Define a interface para as Props que o componente PAI irá passar
+// Tipos de dados
 export interface ChatProps {
-    titulo: string;
-    onClose: () => void; // Função para fechar o chat
+  titulo: string;
+  onClose: () => void;
 }
 
-// Define o tipo de uma única mensagem no histórico
 type Mensagem = {
-    texto: string;
-    remetente: 'bot' | 'usuario'; 
+  texto: string;
+  remetente: 'bot' | 'user';
 };
 
-// --- 2. Componente de Exibição de Mensagem (Display) ---
-
+// Exibição de mensagens (mantendo estilo escuro)
 const MensagemDisplay: React.FC<{ mensagem: Mensagem }> = ({ mensagem }) => {
-    const isBot = mensagem.remetente === 'bot';
-    
-    const style: React.CSSProperties = {
-        padding: '10px 15px', 
-        borderRadius: '20px', 
-        margin: '5px 0',
-        maxWidth: '80%', 
-        alignSelf: isBot ? 'flex-start' : 'flex-end',
-        
-        backgroundColor: isBot ? '#1E314D' : '#E91E63', 
-        color: 'white', 
-        
-        fontSize: '15px', 
-        lineHeight: '1.4'
-    };
-
-    return <div style={style}>{mensagem.texto}</div>;
+  const isBot = mensagem.remetente === 'bot';
+  return (
+    <div
+      className={cn(
+        "py-2 px-3.5 rounded-lg max-w-[85%] text-sm leading-snug break-words shadow-sm",
+        isBot
+          ? "bg-gray-700 text-gray-100 self-start rounded-bl-sm"
+          : "bg-primary text-primary-foreground self-end rounded-br-sm"
+      )}
+    >
+      <p dangerouslySetInnerHTML={{ __html: mensagem.texto.replace(/\n/g, '<br />') }} />
+    </div>
+  );
 };
 
-// --- 3. Componente Principal Chatbot (Atualizado para receber Props) ---
-
-// ⭐ ATUALIZAÇÃO: Recebendo as props e usando a interface ChatProps
+// Componente principal Chatbot
 const Chatbot: React.FC<ChatProps> = ({ titulo, onClose }) => {
-    const [historico, setHistorico] = useState<Mensagem[]>([]);
-    const [etapaAtual, setEtapaAtual] = useState('INICIO');
+  const [historico, setHistorico] = useState<Mensagem[]>([]);
+  const [etapaAtual, setEtapaAtual] = useState('INICIO');
+  const mensagensEndRef = useRef<HTMLDivElement>(null);
 
-    const resetConversa = useCallback(() => {
-        setHistorico([]); 
-        setEtapaAtual('INICIO'); 
-    }, []);
+  // Scroll automático
+  const scrollToBottom = () => {
+    mensagensEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-    const exibirMensagemBot = useCallback((id: string) => {
-        const etapa = ROTEIRO_CONVERSA[id];
-        if (etapa) {
-            const novaMensagem: Mensagem = { texto: etapa.pergunta, remetente: 'bot' };
-            setHistorico(prev => [...prev, novaMensagem]);
-        }
-    }, []);
+  // Reset da conversa
+  const resetConversa = useCallback(() => {
+    setHistorico([]);
+    setEtapaAtual('INICIO');
+  }, []);
 
-    const lidarComResposta = useCallback((opcaoTexto: string, proximoId: string) => {
-        const mensagemUsuario: Mensagem = { texto: opcaoTexto, remetente: 'usuario' };
-        setEtapaAtual(proximoId);
-        setHistorico(prev => [...prev, mensagemUsuario]);
-    }, []);
-    
-    useEffect(() => {
-        if (etapaAtual) {
-            exibirMensagemBot(etapaAtual);
-        }
-    }, [etapaAtual, exibirMensagemBot]);
+  // Exibir mensagem do bot
+  const exibirMensagemBot = useCallback((id: string) => {
+    const etapa = ROTEIRO_CONVERSA[id];
+    if (!etapa) return;
 
-    const etapaAtualDados = ROTEIRO_CONVERSA[etapaAtual];
-    const opcoesDisponiveis = etapaAtualDados ? etapaAtualDados.opcoes : [];
+    setHistorico((prev) => [
+      ...prev,
+      { texto: etapa.pergunta, remetente: 'bot' },
+    ]);
+  }, []);
 
-    return (
-        <div style={chatbotContainerStyle}>
-            {/* ⭐ NOVO: Cabeçalho com Título e Botão de Fechar */}
-            <div style={headerStyle}>
-                <h3 style={{ margin: 0, color: 'white' }}>{titulo}</h3>
-                <button 
-                    onClick={onClose} 
-                    style={closeButtonStyle}
-                >
-                    X
-                </button>
-            </div>
+  // Lidar com resposta do usuário
+  const lidarComResposta = useCallback(
+    (opcaoTexto: string, proximoId: string) => {
+      setHistorico((prev) => [
+        ...prev,
+        { texto: opcaoTexto, remetente: 'user' },
+      ]);
+      setEtapaAtual(proximoId);
+    },
+    []
+  );
 
-            {/* Área de Mensagens (Scrollable) */}
-            <div style={mensagensContainerStyle}>
-                {historico.map((msg, index) => (
-                    <MensagemDisplay key={index} mensagem={msg} />
-                ))}
-            </div>
+  // Efeitos
+  useEffect(() => {
+    scrollToBottom();
+  }, [historico]);
 
-            {/* Área de Opções (Botões) */}
-            <div style={opcoesContainerStyle}>
-                {opcoesDisponiveis.map((opcao, index) => (
-                    <button 
-                        key={index}
-                        onClick={() => lidarComResposta(opcao.texto, opcao.proximoId)}
-                        style={buttonStyle}
-                    >
-                        {opcao.texto}
-                    </button>
-                ))}
+  useEffect(() => {
+    if (etapaAtual) exibirMensagemBot(etapaAtual);
+  }, [etapaAtual, exibirMensagemBot]);
 
-                {/* Botão Voltar ao Início (Global) */}
-                {etapaAtual !== 'INICIO' && (
-                    <button
-                        onClick={resetConversa}
-                        style={backButtonStyle}
-                    >
-                        Voltar ao Início
-                    </button>
-                )}
-            </div>
-            
-            {/* Mensagem de Encerramento */}
-            {opcoesDisponiveis.length === 0 && (
-                <p style={encerramentoStyle}>
-                    Conversa finalizada.
-                </p>
-            )}
-        </div>
-    );
+  useEffect(() => {
+    resetConversa();
+  }, [resetConversa]);
+
+  const etapaAtualDados = ROTEIRO_CONVERSA[etapaAtual];
+  const opcoesDisponiveis = etapaAtualDados ? etapaAtualDados.opcoes : [];
+
+  return (
+    <div className="w-80 sm:w-96 h-[500px] bg-[#1C1B29] border border-gray-700/50 rounded-lg shadow-xl flex flex-col overflow-hidden text-gray-200">
+      {/* Cabeçalho com gradiente igual ao título principal */}
+      <div className="flex justify-between items-center p-3 bg-gradient-to-r from-violet-200 to-fuchsia-300 text-gray-900 shadow-md">
+        <h3 className="text-base font-semibold">{titulo}</h3>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onClose}
+          className="h-8 w-8 text-gray-800 hover:text-gray-900 hover:bg-white/20 rounded-full transition-all duration-300"
+        >
+          <X size={20} />
+        </Button>
+      </div>
+
+      {/* Área de mensagens */}
+      <div className="flex-grow overflow-y-auto p-4 space-y-3 flex flex-col bg-[#1C1B29] text-gray-100">
+        {historico.map((msg, index) => (
+          <MensagemDisplay key={index} mensagem={msg} />
+        ))}
+        <div ref={mensagensEndRef} />
+      </div>
+
+      {/* Opções de resposta */}
+      <div className="p-4 border-t border-gray-700/40 space-y-2 bg-[#13121D]">
+        {opcoesDisponiveis.map((opcao, index) => (
+          <Button
+            key={index}
+            variant="secondary"
+            size="sm"
+            className="w-full justify-start text-left h-auto py-2 px-3 bg-[#27253A] text-violet-200 hover:bg-[#3B3757] hover:text-fuchsia-200 focus:ring-fuchsia-400 rounded-md transition-all duration-300"
+            onClick={() => lidarComResposta(opcao.texto, opcao.proximoId)}
+          >
+            {opcao.texto}
+          </Button>
+        ))}
+
+        {/* Botão de reiniciar conversa */}
+        {(etapaAtual !== 'INICIO' || historico.length > 1) &&
+          opcoesDisponiveis.length === 0 &&
+          ROTEIRO_CONVERSA[etapaAtual]?.opcoes.length === 0 && (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full justify-center text-left h-auto py-2 px-3 text-gray-400 hover:bg-[#27253A] hover:text-violet-200 rounded-md transition-all duration-300"
+              onClick={resetConversa}
+            >
+              <RotateCcw size={16} className="mr-2" /> Reiniciar Conversa
+            </Button>
+          )}
+      </div>
+    </div>
+  );
 };
 
-// ⭐ EXPORTAÇÃO CORRIGIDA: Voltamos para a Exportação Nomeada
-// para manter a coerência com o seu código inicial "export const Chatbot"
-export { Chatbot }; 
-
-
-// --- 4. Estilos (CSS-in-JS) - Com novos estilos de cabeçalho ---
-
-const headerStyle: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingBottom: '10px',
-    marginBottom: '10px',
-    borderBottom: '1px solid #1E314D',
-};
-
-const closeButtonStyle: React.CSSProperties = {
-    background: 'none',
-    border: 'none',
-    color: '#E91E63', // Rosa para destaque
-    fontSize: '20px', // Aumentado para ser mais visível
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    padding: '5px',
-    lineHeight: 1,
-};
-
-// --- 4. Estilos (CSS-in-JS) - ATUALIZADOS PARA O TEMA ESCURO ---
-
-const chatbotContainerStyle: React.CSSProperties = {
-    width: '350px',
-    height: '500px',
-    border: 'none', 
-    borderRadius: '12px', 
-    padding: '15px', 
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#0A1929', // Azul escuro
-    boxShadow: '0 8px 30px rgba(0,0,0,0.5)' // Sombra escura
-};
-
-const mensagensContainerStyle: React.CSSProperties = {
-    flexGrow: 1, 
-    overflowY: 'auto',
-    padding: '5px',
-    marginBottom: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-};
-
-const opcoesContainerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px', 
-    borderTop: '1px solid #1E314D', // Divisor sutil e escuro
-    paddingTop: '15px',
-};
-
-// Estilo para os botões de opção PRINCIPAIS (Rosa/Magenta)
-const buttonStyle: React.CSSProperties = {
-    padding: '12px 15px',
-    border: 'none',
-    borderRadius: '8px',
-    backgroundColor: '#E91E63', 
-    color: 'white',
-    cursor: 'pointer',
-    fontSize: '15px',
-    fontWeight: 'bold',
-    transition: 'background-color 0.2s',
-};
-
-// NOVO ESTILO: Para o botão "Voltar ao Início" (Diferente da opção principal)
-const backButtonStyle: React.CSSProperties = {
-    ...buttonStyle, // Começa com o mesmo estilo
-    backgroundColor: 'transparent', // Fundo transparente
-    border: '1px solid #E91E63', // Borda Rosa
-    color: '#E91E63', // Texto Rosa
-    fontWeight: 'normal',
-};
-
-
-const encerramentoStyle: React.CSSProperties = {
-    textAlign: 'center', 
-    fontSize: '14px', 
-    color: '#888', // Cinza claro para visibilidade
-    marginTop: '10px'
-};
+export { Chatbot };

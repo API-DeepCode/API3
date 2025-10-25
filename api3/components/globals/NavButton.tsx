@@ -37,6 +37,7 @@ export default function NavButton({ destination, buttonStyle, content, onClick }
                 break;
             case 5:
                 nav.navigateToAiAnswer();
+                break;
             case 6:
                 nav.navigateToPlans();
         };

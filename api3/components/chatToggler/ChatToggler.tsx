@@ -1,68 +1,78 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Chatbot } from '../globals/chatbot';
 
-import { Chatbot } from '../globals/chatbot'; 
-
-
-// --- Estilos Básicos (Posicionamento do botão e da tela do chat) ---
+// --- 💬 Estilos do botão e do contêiner ---
 const buttonStyle: React.CSSProperties = {
-    position: 'fixed',
-    bottom: '20px',
-    right: '20px',
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    backgroundColor: '#E91E63', 
-    color: 'white',
-    border: 'none',
-    cursor: 'pointer',
-    fontSize: '24px',
-    zIndex: 1000, 
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.4)',
+  position: 'fixed',
+  bottom: '20px',
+  right: '20px',
+  width: '65px',
+  height: '65px',
+  borderRadius: '50%',
+  background: 'linear-gradient(to right, #f472b6, #ec4899, #c084fc)', // 🔹 Gradiente aplicado (pink-400 → primary → purple-400)
+  color: 'white',
+  border: 'none',
+  cursor: 'pointer',
+  fontSize: '28px',
+  fontWeight: 'bold',
+  zIndex: 1000,
+  boxShadow: '0 6px 14px rgba(0, 0, 0, 0.35)',
+  transition: 'all 0.25s ease-in-out',
+};
+
+// Efeito ao passar o mouse
+const hoverStyle: React.CSSProperties = {
+  transform: 'scale(1.1)',
+  boxShadow: '0 8px 18px rgba(0, 0, 0, 0.45)',
 };
 
 const chatWrapperStyle: React.CSSProperties = {
-    position: 'fixed',
-    bottom: '90px', 
-    right: '20px',
-    zIndex: 999,
+  position: 'fixed',
+  bottom: '90px',
+  right: '20px',
+  zIndex: 999,
+  animation: 'slideUp 0.3s ease-out',
 };
 
+// Animação simples para o chat aparecer suavemente
+const globalStyle = document.createElement('style');
+globalStyle.innerHTML = `
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+`;
+document.head.appendChild(globalStyle);
+
 export const ChatToggler: React.FC = () => {
-    // 1. O estado que controla se a janela de chat está visível
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [hover, setHover] = useState(false);
 
-    // 2. Função para alternar o estado (abrir/fechar)
-    const toggleChat = () => {
-        setIsOpen(!isOpen);
-    };
+  const toggleChat = () => setIsOpen(!isOpen);
+  const handleCloseChat = () => setIsOpen(false);
 
-    // 3. Função que será passada como PROP para o Chatbot fechar a janela
-    const handleCloseChat = () => {
-        setIsOpen(false);
-    };
+  return (
+    <>
+      {/* 🪟 Janela do Chat */}
+      {isOpen && (
+        <div style={chatWrapperStyle}>
+          <Chatbot onClose={handleCloseChat} titulo="Ajuda Rápida" />
+        </div>
+      )}
 
-    return (
-        <>
-            {/* 🖥 1. O Chat (A Pequena Tela) */}
-            {isOpen && (
-                <div style={chatWrapperStyle}>
-                    {/* ⭐ CORREÇÃO: Usando a tag <Chatbot> */}
-                    <Chatbot 
-                        // Agora as props 'onClose' e 'titulo' são válidas!
-                        onClose={handleCloseChat} 
-                        titulo="Ajuda Rápida" 
-                    />
-                </div>
-            )}
-
-            {/* 🖱 2. O Botão de Alternância (Toggle Button) */}
-            <button 
-                style={buttonStyle}
-                onClick={toggleChat}
-            >
-                {/* Ícone que muda: X se aberto, ? se fechado */}
-                {isOpen ? 'X' : '?'}
-            </button>
-        </>
-    );
+      {/* 🎨 Botão flutuante */}
+      <button
+        style={{
+          ...buttonStyle,
+          ...(hover ? hoverStyle : {}),
+        }}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onClick={toggleChat}
+        title={isOpen ? 'Fechar chat' : 'Abrir chat'}
+      >
+        {isOpen ? '✕' : '💬'}
+      </button>
+    </>
+  );
 };

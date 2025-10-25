@@ -1,10 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Building2, Users, Star } from "lucide-react";
+import { ArrowRight, ArrowLeft, Sparkles, Building2, Users, Star } from "lucide-react";
 
 export function Hero() {
+  const router = useRouter();
+
   const scrollToPlans = () => {
     const plansSection = document.getElementById("plans");
     plansSection?.scrollIntoView({ behavior: "smooth" });
@@ -12,8 +15,22 @@ export function Hero() {
 
   return (
     <section className="relative w-full bg-gradient-to-b from-primary/5 via-background to-background py-24 px-6 overflow-hidden">
-      {/* Brilho de fundo */}
+
       <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent blur-3xl opacity-60 -z-10" />
+
+      <div className="absolute top-6 left-6">
+        <Button
+          variant="outline"
+          size="lg"
+          onClick={() => router.push("/")}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-primary/30 text-primary font-medium 
+          bg-primary/5 backdrop-blur-sm shadow-md transition-all duration-300 
+          hover:bg-primary/20 hover:text-primary-foreground hover:shadow-primary/30"
+        >
+          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+          Voltar
+        </Button>
+      </div>
 
       <div className="max-w-5xl mx-auto text-center animate-fadeIn">
         {/* Badge */}
@@ -24,20 +41,16 @@ export function Hero() {
           <Sparkles className="w-4 h-4 text-primary" />
           Plataforma de Desenvolvimento Corporativo
         </Badge>
-
-        {/* Título */}
+        
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-violet-200 to-fuchsia-300 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] leading-tight">
-           Trilhas de Treinamento Personalizadas para Sua Equipe
-           </h1>
+          Trilhas de Treinamento Personalizadas para Sua Equipe
+        </h1>
 
-
-        {/* Descrição */}
         <p className="text-muted-foreground max-w-3xl mx-auto mb-10 text-lg">
           Desenvolva as competências essenciais da sua equipe com trilhas de aprendizagem sob medida.
           Conteúdos relevantes, acompanhamento em tempo real e certificações que fazem a diferença.
         </p>
 
-        {/* Botões */}
         <div className="flex flex-wrap gap-4 justify-center mb-16">
           <Button
             size="lg"
