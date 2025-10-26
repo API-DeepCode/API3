@@ -1,11 +1,7 @@
 "use client";
-
-import React, { useState } from 'react';
-
 // Importa o objeto 'styles' do CSS Module
-
-
-// Força a subida de dois níveis (../..)
+import React, { useState } from 'react';
+import { addResponse } from '@/app/lib/firestoreService';
 import styles from '../../components/globals/CadastroForm.module.css';
 
 // 1. INTERFACE ATUALIZADA para os novos campos
@@ -39,10 +35,10 @@ const CadastroForm: React.FC = () => {
     if (erro) setErro('');
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // 3. LÓGICA DE VALIDAÇÃO SIMPLIFICADA (Apenas checa campos vazios)
+    // Lógica de validação simplificada (Apenas checa campos vazios)
     const camposObrigatorios = [
       formData.nomeEmpresa, 
       formData.cnpj, 
@@ -62,10 +58,37 @@ const CadastroForm: React.FC = () => {
     
     setErro('');
     
-    // 4. LOG ATUALIZADO
-    console.log('Dados para Cadastro de Empresa:', formData);
-    
-    alert('Cadastro simulado de empresa realizado com sucesso!');
+    try {
+      // Preparando os dados no formato do Firestore
+      const dadosParaFirestore = {
+        nome_empresa: formData.nomeEmpresa,
+        cnpj: formData.cnpj,
+        email_contato: formData.email,
+        telefone_contato: formData.telefone,
+        nome_responsavel: formData.nomeResponsavel,
+        cargo_responsavel: formData.cargoResponsavel,
+        cidade: formData.cidadeEstado
+      };
+
+      // Salvando no Firestore na coleção Id_Usuario
+      await addResponse('Id_Usuario', dadosParaFirestore);
+      
+      alert('Cadastro realizado com sucesso!');
+      
+      // Limpar o formulário após o sucesso
+      setFormData({
+        nomeEmpresa: '',
+        cnpj: '',
+        email: '',
+        telefone: '',
+        nomeResponsavel: '',
+        cargoResponsavel: '',
+        cidadeEstado: ''
+      });
+    } catch (error) {
+      console.error('Erro ao cadastrar:', error);
+      setErro('Erro ao realizar o cadastro. Por favor, tente novamente.');
+    }
   };
 
   return (

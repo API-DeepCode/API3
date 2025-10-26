@@ -7,7 +7,7 @@ import styles from "@/components/styles/Forms.module.css"
 import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
 import QuestionDisplay from "@/components/forms/QuestionDisplay";
-import { addResponse } from "@/app/lib/firestoreService";
+import { addResponse, reserveNextId, addSubResponse } from "@/app/lib/firestoreService";
 
 export default function ThirdPart(){
     const peopleCulture: FormsQuestions[] = [
@@ -418,6 +418,13 @@ export default function ThirdPart(){
 
             const promises: Promise<any>[] = [];
 
+            // Reserva um ID numérico único para esta submissão (mestre)
+            const nextSharedId = await reserveNextId('respostas_part3');
+
+            // Cria o documento mestre com ID numérico (ex: respostas_part3/1)
+            const masterMeta = { createdAt: new Date().toISOString(), createdBy: null };
+            await addResponse('respostas_part3', masterMeta, { numericDocId: nextSharedId });
+
             for (const dimName of Object.keys(dimensions)) {
                 const questionsArr = dimensions[dimName] as FormsQuestions[];
                 const keys = (mapKeys as any)[dimName] as string[] | undefined;
@@ -439,7 +446,8 @@ export default function ThirdPart(){
                     }
                 });
 
-                promises.push(addResponse("respostas_part3", data));
+                // Salva cada dimensão como documento da subcoleção 'dimensoes' do documento mestre
+                promises.push(addSubResponse('respostas_part3', nextSharedId, 'dimensoes', { ...data }));
             }
 
             await Promise.all(promises);

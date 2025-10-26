@@ -7,7 +7,7 @@ import styles from "@/components/styles/Forms.module.css"
 import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
 import QuestionDisplay from "@/components/forms/QuestionDisplay";
-import { addResponse } from "@/app/lib/firestoreService";
+import { addResponse, reserveNextId } from "@/app/lib/firestoreService";
 
 export default function SecondPart(){
     const questions: FormsQuestions[] = [
@@ -41,10 +41,11 @@ export default function SecondPart(){
                 resultados_esperados: answers["Se tivesse que resumir, quais seriam os maiores resultados que você gostaria de alcançar com um programa de desenvolvimento humano?"]
             };
     
-        // Envia para o Firestore
-            await addResponse("respostas_part2", data);
-    
-            console.log("Respostas da parte 2 enviadas com sucesso!");
+        // Envia para o Firestore: reserva ID numérico e salva como documento mestre
+            const nextId = await reserveNextId('respostas_part2');
+            await addResponse('respostas_part2', data, { numericDocId: nextId });
+
+            console.log("Respostas da parte 2 enviadas com sucesso! id:", nextId);
         } catch (error) {
             console.error("Erro ao enviar respostas:", error);
         }

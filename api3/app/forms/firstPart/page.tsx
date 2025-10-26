@@ -7,7 +7,7 @@ import styles from "@/components/styles/Forms.module.css"
 import NavButton from "@/components/globals/NavButton"
 import { FormsQuestions } from "@/lib/type";
 import QuestionDisplay from "@/components/forms/QuestionDisplay";
-import { addResponse } from "@/app/lib/firestoreService";
+import { addResponse, reserveNextId } from "@/app/lib/firestoreService";
 
 
 export default function FirstPart(){
@@ -57,10 +57,11 @@ export default function FirstPart(){
             setor: answers["Setor principal da sua empresa"]
         };
 
-    // Envia para o Firestore
-        await addResponse("respostas_part1", data);
+        // Reserva um ID numérico e salva o documento mestre com esse ID
+        const nextId = await reserveNextId('respostas_part1');
+        await addResponse('respostas_part1', data, { numericDocId: nextId });
 
-        console.log("Respostas da parte 1 enviadas com sucesso!");
+        console.log("Respostas da parte 1 enviadas com sucesso! id:", nextId);
     } catch (error) {
         console.error("Erro ao enviar respostas:", error);
     }
