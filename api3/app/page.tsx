@@ -105,7 +105,7 @@ export default function Home() {
             asChild
             className="text-base font-medium transition-all duration-300 border-primary/40 text-primary hover:border-primary hover:bg-primary/10 hover:text-primary shadow-sm hover:shadow-primary/20"
           >
-            <Link href="/plans" aria-label="Ver planos disponíveis">
+            <Link href="/cadastro" aria-label="Ver planos disponíveis">
               Ver Planos
             </Link>
           </Button>
